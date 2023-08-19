@@ -50,4 +50,10 @@ use {
     'nvim-tree/nvim-web-devicons', -- optional
   },
 }
+use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 end)
