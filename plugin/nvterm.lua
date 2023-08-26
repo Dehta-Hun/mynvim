@@ -27,9 +27,9 @@ require("nvterm").setup({
 vim.keymap.set({"n", "t", "v", "x"}, "<A-i>", function ()
     require("nvterm.terminal").toggle "float"
 end )
-vim.keymap.set({"n", "t"}, "<leader>v", function()
+vim.keymap.set({"n",}, "<leader>v", function()
     require("nvterm.terminal").new "vertical"
 end)
-vim.keymap.set({"n", "t"}, "<leader>t", function()
-    require("nvterm.terminal").toggle "horizontal"
+vim.keymap.set({"n",}, "<leader>t", function()
+    require("nvterm.terminal").new "horizontal"
 end)

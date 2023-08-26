@@ -24,3 +24,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
