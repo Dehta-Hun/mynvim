@@ -56,4 +56,5 @@ use {
         require('Comment').setup()
     end
 }
+use { 'brenoprata10/nvim-highlight-colors' }
 end)

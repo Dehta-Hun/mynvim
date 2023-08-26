@@ -24,7 +24,10 @@ require("nvim-tree").setup({
     update_root = false,
   },
   view = {
-    adaptive_size = true,
+    adaptive_size = false,
+    relativenumber = true,
+    cursorline = true,
+    number = true,
     side = "left",
     width = 30,
     preserve_window_proportions = true,
