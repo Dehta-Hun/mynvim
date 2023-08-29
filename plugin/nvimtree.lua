@@ -29,8 +29,9 @@ require("nvim-tree").setup({
     cursorline = true,
     number = true,
     side = "left",
-    width = 30,
-    preserve_window_proportions = true,
+    width = 25,
+    signcolumn = "no",
+    preserve_window_proportions = false,
   },
   git = {
     enable = true,

@@ -13,9 +13,10 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use {
-	  "folke/tokyonight.nvim",
-  }
+  -- MY CUSTOM THEME INSTALLED
+  -- use {
+	 --  "folke/tokyonight.nvim",
+  -- }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
@@ -57,4 +58,5 @@ use {
     end
 }
 use { 'brenoprata10/nvim-highlight-colors' }
+use { 'christoomey/vim-tmux-navigator' }
 end)

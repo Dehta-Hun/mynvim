@@ -27,7 +27,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
 
---vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "no"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.timeoutlen = 400
