@@ -20,6 +20,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 800
+
 
 -- vim.opt.colorcolumn = "80"
 
@@ -30,7 +32,6 @@ vim.opt.mouse = "a"
 vim.opt.signcolumn = "no"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.timeoutlen = 400
 vim.opt.undofile = true
 
 -- vim.opt.clipboard = "unnamedplus"

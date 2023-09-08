@@ -59,4 +59,18 @@ use {
 }
 use { 'brenoprata10/nvim-highlight-colors' }
 use { 'christoomey/vim-tmux-navigator' }
+use {'stevearc/dressing.nvim'}
+use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/nvim-cmp',
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+    }
+
+}
 end)

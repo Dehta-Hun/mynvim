@@ -13,6 +13,13 @@ vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l")
 vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>k")
 vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>j")
 
+-- easy move from terminal
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "G", "Gzz")
@@ -25,5 +32,5 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
-
-vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
+-- copy to clipboard
+vim.keymap.set("v", "<C-c>", '"+y')
