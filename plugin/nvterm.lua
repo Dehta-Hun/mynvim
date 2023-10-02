@@ -11,7 +11,7 @@ require("nvterm").setup({
         height = 0.4,
         border = "single",
       },
-      horizontal = { location = "rightbelow", split_ratio = .3, },
+      horizontal = { location = "rightbelow", split_ratio = 0.3, },
       vertical = { location = "rightbelow", split_ratio = .5 },
     }
   },
@@ -27,9 +27,9 @@ require("nvterm").setup({
 vim.keymap.set({"n", "t", "v", "x"}, "<A-i>", function ()
     require("nvterm.terminal").toggle "float"
 end )
-vim.keymap.set({"n",}, "<leader>v", function()
-    require("nvterm.terminal").new "vertical"
+vim.keymap.set({"n", "t", "v", "x"}, "<A-z>", function()
+    require("nvterm.terminal").toggle "vertical"
 end)
-vim.keymap.set({"n",}, "<leader>t", function()
-    require("nvterm.terminal").new "horizontal"
+vim.keymap.set({"n", "t", "v", "x"}, "<A-t>", function()
+    require("nvterm.terminal").toggle "horizontal"
 end)
