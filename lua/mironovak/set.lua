@@ -35,5 +35,5 @@ vim.opt.splitright = true
 vim.opt.undofile = true
 
 -- vim.opt.clipboard = "unnamedplus"
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 

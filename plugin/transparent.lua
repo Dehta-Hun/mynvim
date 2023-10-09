@@ -8,4 +8,4 @@ require("transparent").setup({
   extra_groups = {'NvimTreeNormal', 'NormalFloat','NvimTreeNormalNC'}, -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
 })
-require("tokyonight").setup{ transparent = vim.g.transparent_enabled }
+-- require("tokyonight").setup{ transparent = vim.g.transparent_enabled }

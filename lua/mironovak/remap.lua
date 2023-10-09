@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<A-n>", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus)
 
 vim.keymap.set({"n", "v"}, "<Esc>", vim.cmd.noh)
@@ -34,3 +34,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- copy to clipboard
 vim.keymap.set("v", "<C-c>", '"+y')
+
+-- buffers
+vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
+vim.keymap.set("n", "<C-p>", vim.cmd.bprev)

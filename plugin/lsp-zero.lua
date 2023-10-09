@@ -29,3 +29,13 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
   }),
 })
+
+local rust_tools = require('rust-tools')
+
+rust_tools.setup({
+    server = {
+        on_attach = function(client, bufnr)
+            vim.keymap.set('n', '<leader>caa', rust_tools.hover_actions.hover_actions, {buffer = bufnr})
+        end
+    }
+})

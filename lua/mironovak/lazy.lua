@@ -12,13 +12,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
+    { "catppuccin/nvim", name = "catppuccin", 
+    priority = 1000,
+    config = function()
+    end,
+},
 {
   "Dehta-Hun/tokyonight.nvim",
   lazy = false,
   priority = 1000,
   opts = {},
   config = function()
-      vim.cmd[[colorscheme tokyonight]]
+      -- vim.cmd[[colorscheme tokyonight]]
   end,
 },
 {
@@ -69,9 +74,9 @@ require("lazy").setup({
 {
     'williamboman/mason.nvim',
     lazy = false,
-  config = function()
-      require("mason").setup()
-  end,
+    config = function()
+        require("mason").setup()
+    end,
 
 },           -- Optional
 },
@@ -89,6 +94,7 @@ require("lazy").setup({
 {   'brenoprata10/nvim-highlight-colors', lazy = false,},
 {   'christoomey/vim-tmux-navigator', lazy = false,},
 {   'stevearc/dressing.nvim', lazy = false,},
+{   'simrat39/rust-tools.nvim', lazy = false,},
 {
     'hrsh7th/nvim-cmp',
     lazy = false,
