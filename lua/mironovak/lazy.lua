@@ -54,7 +54,7 @@ require("lazy").setup({
     end,
 },
 
-{   'ThePrimeagen/harpoon', lazy = false,},
+{   'ThePrimeagen/harpoon', lazy = true,},
 {   'mbbill/undotree', lazy = false,},
 {   'tpope/vim-fugitive', lazy = false,},
 {
@@ -112,3 +112,4 @@ require("lazy").setup({
 
 
 })
+
