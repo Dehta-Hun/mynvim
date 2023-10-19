@@ -34,4 +34,5 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
 
--- vim.opt.cursorline = true
+vim.opt.cursorline = true
+vim.cmd('let g:rnvimr_enable_picker = 1')

@@ -12,14 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
-    { "catppuccin/nvim", name = "catppuccin", 
+    { "catppuccin/nvim", name = "catppuccin",
     priority = 1000,
     config = function()
     end,
 },
 {
   "Dehta-Hun/tokyonight.nvim",
-  lazy = false,
   priority = 1000,
   opts = {},
   config = function()
@@ -79,6 +78,19 @@ require("lazy").setup({
     end,
 
 },           -- Optional
+
+{
+    'kevinhwang91/rnvimr',
+    lazy = false,
+    -- config = function()
+    --     require('rnvimr').setup(
+    --       vim.keymap.set({"n","t","v",}, "<A-r>", vim.cmd.RnvimrToggle),
+    --       vim.cmd('let g:rnvimr_enable_picker = 1')
+    --       )
+      -- end,
+
+},
+
 },
 {   'nvim-lualine/lualine.nvim', lazy = false,},
 {   'NvChad/nvterm', lazy = false,},

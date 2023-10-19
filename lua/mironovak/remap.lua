@@ -38,3 +38,6 @@ vim.keymap.set("v", "<C-c>", '"+y')
 -- buffers
 vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
 vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
+
+-- Ranger toggle
+vim.keymap.set({"n","t","v",}, "<A-r>", vim.cmd.RnvimrToggle)
