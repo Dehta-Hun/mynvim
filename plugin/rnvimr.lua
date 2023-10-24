@@ -1,6 +1,0 @@
--- require("rnvimr").setup({
---       vim.keymap.set({"n","t","v",}, "<A-r>", vim.cmd.RnvimrToggle),
---       vim.opt.s
---       })
--- Rnvimr = require("rnvimr")
--- Rnvimr.rnvimr_enable_picker = 1

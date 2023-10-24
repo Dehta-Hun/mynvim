@@ -36,3 +36,10 @@ vim.opt.undofile = true
 
 vim.opt.cursorline = true
 vim.cmd('let g:rnvimr_enable_picker = 1')
+
+vim.filetype.add({
+    extension = {
+       bpt = 'xml',
+    },
+})
+-- vim.listchars = {eol:↵,trail:~,tab:>-,nbsp:␣}
