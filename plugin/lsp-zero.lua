@@ -4,19 +4,16 @@ local function allow_format(servers)
     return function(client) return vim.tbl_contains(servers, client.name) end
 end
 lsp_zero.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
     lsp_zero.default_keymaps({ buffer = bufnr })
     local opts = { buffer = bufnr }
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr})
     vim.keymap.set({ 'n', 'x' }, 'gq', function()
         vim.lsp.buf.format({
             async = false,
             timeout_ms = 10000,
-            filter = allow_format({ 'lua_ls', 'rust_analyzer', 'lemminx', })
+            filter = allow_format({'black', 'lua_ls', 'rust_analyzer', 'lemminx',  })
         })
     end, opts)
-
-    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 lsp_zero.format_mapping('gq', {

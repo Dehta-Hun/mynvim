@@ -24,14 +24,17 @@ require("nvim-tree").setup({
     update_root = false,
   },
   view = {
-    adaptive_size = false,
+    adaptive_size = true,
     relativenumber = true,
     cursorline = true,
     number = true,
     side = "left",
-    width = 25,
+    width = {
+        max = 35,
+        min = 20,
+    },
     signcolumn = "no",
-    preserve_window_proportions = false,
+    preserve_window_proportions = true,
   },
   git = {
     enable = true,

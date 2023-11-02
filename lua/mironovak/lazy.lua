@@ -21,18 +21,10 @@ require("lazy").setup({
         end,
     },
     {
-        'ntpeters/vim-better-whitespace',
-        lazy = false,
+        'mhartington/formatter.nvim',
+        config = function ()
+        end
     },
-
-    -- {
-    --   "Dehta-Hun/tokyonight.nvim",
-    --   priority = 1000,
-    --   opts = {},
-    --   config = function()
-    --       -- vim.cmd[[colorscheme tokyonight]]
-    --   end,
-    -- },
     {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -136,13 +128,6 @@ require("lazy").setup({
         {
             'kevinhwang91/rnvimr',
             lazy = false,
-            -- config = function()
-            --     require('rnvimr').setup(
-            --       vim.keymap.set({"n","t","v",}, "<A-r>", vim.cmd.RnvimrToggle),
-            --       vim.cmd('let g:rnvimr_enable_picker = 1')
-            --       )
-            -- end,
-
         },
 
     },
