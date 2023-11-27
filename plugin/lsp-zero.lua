@@ -9,11 +9,15 @@ lsp_zero.on_attach(function(client, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 	local opts = { buffer = bufnr }
 	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
-	--     vim.lsp.buf.format({
-	--         async = false,
-	--         timeout_ms = 10000,
-	--         filter = allow_format({ 'black', 'lua_ls', 'rust_analyzer', 'lemminx', })
-	--     })
+
+	vim.lsp.buf.format({
+		filter = allow_format({ "lemminx" }),
+		async = true,
+		timeout_ms = 10000,
+		servers = {
+			["lemminx"] = { "xml" },
+		},
+	})
 	-- end, opts)
 end)
 

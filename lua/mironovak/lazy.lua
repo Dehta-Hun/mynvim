@@ -21,7 +21,6 @@ require("lazy").setup({
 	},
 	{
 		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -33,7 +32,16 @@ require("lazy").setup({
 			require("notify").setup({
 				background_colour = "#181825",
 			})
-			vim.notify = require("notify")
+			local banned_messages = { "[LSP] Format request failed, no matching language servers." }
+
+			vim.notify = function(msg, ...)
+				for _, banned in ipairs(banned_messages) do
+					if msg == banned then
+						return
+					end
+				end
+				require("notify")(msg, ...)
+			end
 		end,
 	},
 	{
@@ -130,7 +138,6 @@ require("lazy").setup({
 			{ "hrsh7th/cmp-nvim-lsp" },
 		},
 	},
-	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -144,29 +151,12 @@ require("lazy").setup({
 			require("mason").setup()
 		end,
 	}, -- Optional
-	-- {
-	--     'VonHeikemen/lsp-zero.nvim',
-	--     lazy = false,
-	--     dependencies = {
-	--         -- Autocompletion
-	--         { 'hrsh7th/nvim-cmp' },     -- Required
-	--         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-	--     },
-	--     {
-	--         'neovim/nvim-lspconfig',
-	--         lazy = false,
-	--         priority = 998,
-	--     },
-	--
 	{
 		"kevinhwang91/rnvimr",
 		lazy = false,
 	},
-	--
-	-- },
 	{ "nvim-lualine/lualine.nvim", lazy = false },
 	{ "NvChad/nvterm", lazy = false },
-	-- { "xiyaowong/transparent.nvim", lazy = false },
 	{ "Aasim-A/scrollEOF.nvim", lazy = false },
 	{
 		"nvim-tree/nvim-tree.lua",
