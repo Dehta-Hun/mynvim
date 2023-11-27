@@ -4,21 +4,23 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<A-n>", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus)
 
-vim.keymap.set({"n"}, "zo", "za")
-vim.keymap.set({"n"}, "zO", "zA")
-vim.keymap.set({"n", "v"}, "<Esc>", vim.cmd.noh)
+-- Hide/close deapth level
+vim.keymap.set({ "n" }, "zo", "za")
+vim.keymap.set({ "n" }, "zO", "zA")
+
+vim.keymap.set({ "n", "v" }, "<Esc>", vim.cmd.noh)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set({"n", "v"}, "<C-h>", "<C-w>h")
-vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l")
-vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>k")
-vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l")
+vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j")
 
-vim.keymap.set({"n", "v"}, "<A-h>", "<C-w><")
-vim.keymap.set({"n", "v"}, "<A-l>", "<C-w>>")
-vim.keymap.set({"n", "v"}, "<A-k>", "<C-w>+")
-vim.keymap.set({"n", "v"}, "<A-j>", "<C-w>-")
+vim.keymap.set({ "n", "v" }, "<A-h>", "<C-w><")
+vim.keymap.set({ "n", "v" }, "<A-l>", "<C-w>>")
+vim.keymap.set({ "n", "v" }, "<A-k>", "<C-w>+")
+vim.keymap.set({ "n", "v" }, "<A-j>", "<C-w>-")
 -- easy move from terminal
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
@@ -36,7 +38,7 @@ vim.keymap.set("n", "J", "mzJ`z")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- copy to clipboard
 vim.keymap.set("v", "<C-c>", '"+y')
@@ -46,6 +48,7 @@ vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
 vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
 
 -- Ranger toggle
-vim.keymap.set({"n","t","v",}, "<A-r>", vim.cmd.RnvimrToggle)
+vim.keymap.set({ "n", "t", "v", }, "<A-r>", vim.cmd.RnvimrToggle)
 
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
+vim.keymap.set({ 'n', 'x' }, 'gq', vim.cmd.Format)

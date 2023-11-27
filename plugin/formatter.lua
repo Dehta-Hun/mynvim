@@ -1,3 +1,5 @@
+local util = require "formatter.util"
+
 require("formatter").setup {
     -- Enable or disable logging
     logging = true,
@@ -32,12 +34,37 @@ require("formatter").setup {
                 }
             end
         },
-        -- Use the special "*" filetype for defining formatter configurations on
-        -- any filetype
-        ["*"] = {
-            -- "formatter.filetypes.any" defines default configurations for any
-            -- filetype
-            require("formatter.filetypes.any").remove_trailing_whitespace
-        }
+        python = {
+            require("formatter.filetypes.python").autopep8,
+            function()
+                -- Supports conditional formatting
+                if util.get_current_buffer_file_name() == "special.lua" then
+                    return nil
+                end
+
+                -- Full specification of configurations is down below and in Vim help
+                -- files
+                return {
+                    exe = "autopep8",
+                    args = {
+                        -- "--search-parent-directories",
+                        -- "--stdin-filepath",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                        -- "--",
+                        -- "-",
+                    },
+                    stdin = true,
+                }
+            end
+        },
+    },
+
+    -- Use the special "*" filetype for defining formatter configurations on
+    -- any filetype
+    ["*"] = {
+        -- "formatter.filetypes.any" defines default configurations for any
+        -- filetype
+        require("formatter.filetypes.any").remove_trailing_whitespace
     }
 }
+-- }

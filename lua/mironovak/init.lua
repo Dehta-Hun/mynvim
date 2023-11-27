@@ -1,6 +1,4 @@
 require("mironovak.remap")
 require("mironovak.set")
 require("mironovak.lazy")
--- require("mironovak.packer")
---require('lualine').setup()
 vim.cmd([[autocmd BufEnter * set formatoptions-=o]])
