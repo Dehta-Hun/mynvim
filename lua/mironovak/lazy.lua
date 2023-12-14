@@ -31,8 +31,12 @@ require("lazy").setup({
 		config = function()
 			require("notify").setup({
 				background_colour = "#181825",
+				-- render = "minimal",
+				max_width = 50,
+				max_height = 5,
 			})
-			local banned_messages = { "[LSP] Format request failed, no matching language servers." }
+			local banned_messages =
+				{ "[LSP] Format request failed, no matching language servers.", "All parsers are up-to-date!" }
 
 			vim.notify = function(msg, ...)
 				for _, banned in ipairs(banned_messages) do
@@ -140,8 +144,15 @@ require("lazy").setup({
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		lazy = false,
 		dependencies = {
-			{ "L3MON4D3/LuaSnip" },
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 		},
 	},
 	{
@@ -150,7 +161,7 @@ require("lazy").setup({
 		config = function()
 			require("mason").setup()
 		end,
-	}, -- Optional
+	},
 	{
 		"kevinhwang91/rnvimr",
 		lazy = false,
@@ -169,17 +180,4 @@ require("lazy").setup({
 	{ "christoomey/vim-tmux-navigator", lazy = false },
 	{ "stevearc/dressing.nvim", lazy = false },
 	{ "simrat39/rust-tools.nvim", lazy = false },
-	{
-		"hrsh7th/nvim-cmp",
-		lazy = false,
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/nvim-cmp",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-		},
-	},
 })

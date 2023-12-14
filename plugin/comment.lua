@@ -1,8 +1,8 @@
-require('Comment').setup({
-    toggler = {
-        line = ' /',
-    },
-    opleader = {
-        line = ' /',
-    }
+require("Comment").setup({
+	toggler = {
+		line = " /",
+	},
+	opleader = {
+		line = " /",
+	},
 })

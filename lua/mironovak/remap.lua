@@ -47,7 +47,7 @@ vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
 vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
 
 -- Ranger toggle
-vim.keymap.set({ "n", "t", "v", }, "<A-r>", vim.cmd.RnvimrToggle)
+vim.keymap.set({ "n", "t", "v" }, "<A-r>", vim.cmd.RnvimrToggle)
 
-vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-vim.keymap.set({ 'n', 'x' }, 'gq', vim.cmd.Format)
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
+vim.keymap.set({ "n", "x" }, "gq", vim.cmd.Format)
