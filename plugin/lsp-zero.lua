@@ -10,14 +10,16 @@ lsp_zero.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr }
 	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
 
-	vim.lsp.buf.format({
-		filter = allow_format({ "lemminx" }),
-		async = true,
-		timeout_ms = 10000,
-		servers = {
-			["lemminx"] = { "xml" },
-		},
-	})
+	-- if vim.bo.filetype == "xml" then
+	-- 	vim.lsp.buf.format({
+	-- 		filter = allow_format({ "lemminx" }),
+	-- 		async = true,
+	-- 		timeout_ms = 10000,
+	-- 		servers = {
+	-- 			["lemminx"] = { "xml" },
+	-- 		},
+	-- 	})
+	-- end
 	-- end, opts)
 end)
 

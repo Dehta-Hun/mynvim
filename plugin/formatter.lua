@@ -37,6 +37,9 @@ require("formatter").setup({
 				}
 			end,
 		},
+		xml = {
+			require("formatter.filetypes.xml").xmllint,
+		},
 		json = {
 			require("formatter.filetypes.json").fixjson,
 			function()

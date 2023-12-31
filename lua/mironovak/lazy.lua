@@ -35,8 +35,7 @@ require("lazy").setup({
 				max_width = 50,
 				max_height = 5,
 			})
-			local banned_messages =
-				{ "[LSP] Format request failed, no matching language servers.", "All parsers are up-to-date!" }
+			local banned_messages = { "All parsers are up-to-date!" }
 
 			vim.notify = function(msg, ...)
 				for _, banned in ipairs(banned_messages) do

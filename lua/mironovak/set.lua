@@ -20,11 +20,11 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.timeoutlen = 800
 
-vim.opt.ignorecase = true
+-- vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
 
-vim.opt.signcolumn = "no"
+vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
@@ -34,14 +34,14 @@ vim.cmd("let g:rnvimr_enable_picker = 1")
 
 vim.filetype.add({
 	extension = {
-		bpt = "xml",
+		bpt = "xml", -- treat bpt as xml
 	},
 	filename = {},
 	pattern = {
-		[".*ansible(.*/?)(.*/?)(.*/?)(.*/?)%w*.ya?ml"] = "yaml.ansible",
+		[".*ansible(.*/?)(.*/?)(.*/?)(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
 	},
 })
-
+-- RSync repo to testmachine
 vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = function()
 		local path = vim.api.nvim_buf_get_name(0):match(".*projectsGit(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)%w*.$")
@@ -52,3 +52,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		end
 	end,
 })
+-- Cyrillic support
+vim.opt.langmap = "йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"
