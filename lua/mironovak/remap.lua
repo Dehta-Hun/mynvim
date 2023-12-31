@@ -50,4 +50,3 @@ vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
 vim.keymap.set({ "n", "t", "v" }, "<A-r>", vim.cmd.RnvimrToggle)
 
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-vim.keymap.set({ "n", "x" }, "gq", vim.cmd.Format)

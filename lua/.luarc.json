@@ -1,0 +1,9 @@
+{
+    "diagnostics.disable": [
+        "undefined-global",
+        "unused-local"
+    ],
+    "diagnostics.globals": [
+        "window"
+    ]
+}
