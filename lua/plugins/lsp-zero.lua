@@ -9,22 +9,26 @@ return {
 				return vim.tbl_contains(servers, client.name)
 			end
 		end
+		-- require("lspconfig").pyright.setup({
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		require("lspconfig").jedi_language_server.setup({
+			init_options = {
+				workspace = {
+					extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/", },
+				},
+			},
+		})
 		lsp_zero.on_attach(function(client, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr })
 			local opts = { buffer = bufnr }
 			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
-
-			-- if vim.bo.filetype == "xml" then
-			-- 	vim.lsp.buf.format({
-			-- 		filter = allow_format({ "lemminx" }),
-			-- 		async = true,
-			-- 		timeout_ms = 10000,
-			-- 		servers = {
-			-- 			["lemminx"] = { "xml" },
-			-- 		},
-			-- 	})
-			-- end
-			-- end, opts)
 		end)
 
 		require("mason").setup({})
@@ -38,18 +42,6 @@ return {
 				end,
 			},
 		})
-
-		-- lsp_zero.format_mapping('gq', {
-		--     format_opts = {
-		--         async = false,
-		--         timeout_ms = 10000,
-		--     },
-		--     servers = {
-		--         ['tsserver'] = { 'javascript', 'typescript' },
-		--         ['lemminx'] = { 'xml', 'bpt' },
-		--         ['rust_analyzer'] = { 'rust' },
-		--     }
-		-- })
 
 		local cmp = require("cmp")
 		local cmp_format = lsp_zero.cmp_format()
