@@ -19,7 +19,7 @@ return {
 	-- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 	--
 	config = function()
-        vim.opt.termguicolors = true
+		vim.opt.termguicolors = true
 		require("nvim-tree").setup({
 			sort_by = "case_sensitive",
 			filters = {

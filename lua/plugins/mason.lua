@@ -1,7 +1,6 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		-- lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
@@ -12,27 +11,12 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"ansiblels",
-					-- "ansible-lint",
-					-- "black",
-					-- "blackd-client",
-					-- "fixjson",
-					-- "gitleaks",
-					-- "gitlint",
-					-- "gitui",
-					-- "isort",
-					"jedi_language_server",
-					-- "json-lsp",
-					-- "lemminx",
+					"bash-language-server",
+                    "ruff_lsp",
 					"lua_ls",
-					-- "mypy",
-					-- "pylint",
-					-- "shellcheck",
-					-- "stylua",
 				},
 			})
 		end,
-		-- lazy = false,
-		-- priority = 999,
 	},
 	{
 		"neovim/nvim-lspconfig",

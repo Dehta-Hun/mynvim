@@ -3,23 +3,16 @@ return {
 	config = function()
 		local util = require("formatter.util")
 		local pyform = {}
-		function pyform.black()
+		function pyform.ruff()
 			return {
-				exe = "black",
+				exe = "ruff",
 				args = {
-					"-l 120",
+					"format",
+                    "--config",
+                    "$HOME/.config/ruff.toml",
 					"-q",
-					"--stdin-filename",
-					util.escape_path(util.get_current_buffer_file_name()),
 					"-",
 				},
-				stdin = true,
-			}
-		end
-		function pyform.isort()
-			return {
-				exe = "isort",
-				args = { "-l 120", "-q", "--filename", util.escape_path(util.get_current_buffer_file_path()), "-" },
 				stdin = true,
 			}
 		end
@@ -60,8 +53,7 @@ return {
 					end,
 				},
 				python = {
-					pyform.black(),
-					pyform.isort(),
+					pyform.ruff(),
 				},
 			},
 

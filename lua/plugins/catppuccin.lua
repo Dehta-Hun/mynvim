@@ -7,8 +7,8 @@ return {
 			flavour = "macchiato",
 			integrations = {
 				cmp = true,
-                gitsigns = true,
-                notify = true,
+				gitsigns = true,
+				notify = true,
 				telescope = {
 					enabled = true,
 					style = "nvchad",
@@ -27,6 +27,6 @@ return {
 				mocha = {},
 			},
 		})
-			vim.cmd("colorscheme catppuccin")
+		vim.cmd("colorscheme catppuccin")
 	end,
 }

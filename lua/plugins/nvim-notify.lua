@@ -3,8 +3,6 @@ return {
 	lazy = false,
 	config = function()
 		require("notify").setup({
-			-- background_colour = "#181825",
-			-- render = "minimal",
 			max_width = 50,
 			max_height = 5,
 		})

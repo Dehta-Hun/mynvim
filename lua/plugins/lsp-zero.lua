@@ -21,7 +21,7 @@ return {
 		require("lspconfig").jedi_language_server.setup({
 			init_options = {
 				workspace = {
-					extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/", },
+					extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
 				},
 			},
 		})
