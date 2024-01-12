@@ -13,8 +13,9 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.mouse = "a"
 vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
@@ -22,17 +23,14 @@ vim.opt.timeoutlen = 800
 
 -- vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.mouse = "a"
+vim.opt.formatoptions = "ct"
 
-vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
 
 vim.opt.cursorline = true
 vim.cmd("let g:rnvimr_enable_picker = 1")
-
-vim.opt.formatoptions = "ct"
 
 vim.filetype.add({
 	extension = {
