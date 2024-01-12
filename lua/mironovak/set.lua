@@ -32,6 +32,8 @@ vim.opt.undofile = true
 vim.opt.cursorline = true
 vim.cmd("let g:rnvimr_enable_picker = 1")
 
+vim.opt.formatoptions = "ct"
+
 vim.filetype.add({
 	extension = {
 		bpt = "xml", -- treat bpt as xml
@@ -53,4 +55,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 -- Cyrillic support
-vim.opt.langmap = "йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"
+vim.opt.langmap =
+	"йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"
