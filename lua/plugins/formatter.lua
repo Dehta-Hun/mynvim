@@ -8,8 +8,8 @@ return {
 				exe = "ruff",
 				args = {
 					"format",
-                    "--config",
-                    "$HOME/.config/ruff.toml",
+					"--config",
+					"$HOME/.config/ruff.toml",
 					"-q",
 					"-",
 				},
