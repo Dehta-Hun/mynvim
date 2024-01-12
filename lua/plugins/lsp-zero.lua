@@ -4,20 +4,19 @@ return {
 	-- lazy = true,
 	config = function()
 		local lsp_zero = require("lsp-zero")
+		lsp_zero.extend_lspconfig()
 		local function allow_format(servers)
 			return function(client)
 				return vim.tbl_contains(servers, client.name)
 			end
 		end
-		-- require("lspconfig").pyright.setup({
-		-- 	settings = {
-		-- 		python = {
-		-- 			analysis = {
-		-- 				extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
+		require("lspconfig").ruff_lsp.setup({
+			init_options = {
+				workspace = {
+					extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
+				},
+			},
+		})
 		require("lspconfig").jedi_language_server.setup({
 			init_options = {
 				workspace = {
