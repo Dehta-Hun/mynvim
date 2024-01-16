@@ -11,25 +11,7 @@ return {
 			find_files = {
 				hidden = true,
 			},
-			live_grep = {
-				additional_args = function(opts)
-					return { "--hidden" }
-				end,
-			},
 		}
-		local defaults = { -- -- убрать локал если что то пойдет не так
-			vimgrep_arguments = {
-				"rg",
-				"--color=never",
-				"--no-heading",
-				"--with-filename",
-				"--line-number",
-				"--column",
-				"--smart-case",
-				"-u", -- thats the new thing
-			},
-		}
-
 		function vim.getVisualSelection()
 			vim.cmd('noau normal! "vy"')
 			local text = vim.fn.getreg("v")
