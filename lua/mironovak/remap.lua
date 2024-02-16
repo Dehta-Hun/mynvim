@@ -1,52 +1,60 @@
 vim.g.mapleader = " "
+local setkey = vim.keymap.set
 
-vim.keymap.set("n", "<A-n>", vim.cmd.NvimTreeToggle)
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus)
+setkey("n", "<A-n>", vim.cmd.NvimTreeToggle)
+setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
 
 -- Hide/close deapth level
-vim.keymap.set({ "n" }, "zo", "za")
-vim.keymap.set({ "n" }, "zO", "zA")
+setkey({ "n" }, "zo", "za")
+setkey({ "n" }, "zO", "zA")
 
-vim.keymap.set({ "n", "v" }, "<Esc>", vim.cmd.noh)
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+setkey({ "n", "v" }, "<Esc>", vim.cmd.noh)
+setkey("v", "J", ":m '>+1<CR>gv=gv")
+setkey("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h")
-vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l")
-vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k")
-vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j")
+setkey({ "n", "v" }, "<C-h>", "<C-w>h")
+setkey({ "n", "v" }, "<C-l>", "<C-w>l")
+setkey({ "n", "v" }, "<C-k>", "<C-w>k")
+setkey({ "n", "v" }, "<C-j>", "<C-w>j")
 
-vim.keymap.set({ "n", "v" }, "<A-h>", "<C-w><")
-vim.keymap.set({ "n", "v" }, "<A-l>", "<C-w>>")
-vim.keymap.set({ "n", "v" }, "<A-k>", "<C-w>+")
-vim.keymap.set({ "n", "v" }, "<A-j>", "<C-w>-")
+setkey({ "n", "v" }, "<A-h>", "<C-w><")
+setkey({ "n", "v" }, "<A-l>", "<C-w>>")
+setkey({ "n", "v" }, "<A-k>", "<C-w>+")
+setkey({ "n", "v" }, "<A-j>", "<C-w>-")
 -- easy move from terminal
-vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
-vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
-vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+setkey("t", "<C-h>", "<C-\\><C-n><C-w>h")
+setkey("t", "<C-l>", "<C-\\><C-n><C-w>l")
+setkey("t", "<C-k>", "<C-\\><C-n><C-w>k")
+setkey("t", "<C-j>", "<C-\\><C-n><C-w>j")
+setkey("t", "<Esc>", "<C-\\><C-n>")
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "G", "Gzz")
+setkey("n", "<C-d>", "<C-d>zz")
+setkey("n", "<C-u>", "<C-u>zz")
+setkey("n", "G", "Gzz")
 
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "J", "mzJ`z")
+setkey("n", "n", "nzzzv")
+setkey("n", "N", "Nzzzv")
+setkey("n", "J", "mzJ`z")
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+setkey("x", "<leader>p", [["_dP]])
+setkey({ "n", "v" }, "<leader>d", [["_d]])
 
 -- copy to clipboard
-vim.keymap.set("v", "<C-c>", '"+y')
+setkey("v", "<C-c>", '"+y')
 
 -- buffers
-vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
-vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
+setkey("n", "<C-n>", vim.cmd.bnext)
+setkey("n", "<C-p>", vim.cmd.bprev)
 
 -- Ranger toggle
-vim.keymap.set({ "n", "t", "v" }, "<A-r>", vim.cmd.RnvimrToggle)
+setkey({ "n", "t", "v" }, "<A-r>", vim.cmd.RnvimrToggle)
 
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
+setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
+
+
+local buffdelete = function()
+	vim.cmd.bdelete()
+	vim.cmd.bnext()
+end
+setkey("n", "<leader>bd", buffdelete)

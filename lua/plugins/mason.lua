@@ -13,6 +13,7 @@ return {
 					"ansiblels",
 					"ruff_lsp",
 					"lua_ls",
+                    "jedi_language_server",
 				},
 			})
 		end,
@@ -40,13 +41,21 @@ return {
 				},
 			})
 			lspconfig.ansiblels.setup({})
-			lspconfig.ruff_lsp.setup({
+			lspconfig.remark_ls.setup({})
+			lspconfig.jedi_language_server.setup({
 				init_options = {
 					workspace = {
 						extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
 					},
 				},
-			})
+            })
+			-- lspconfig.ruff_lsp.setup({
+			-- 	init_options = {
+			-- 		workspace = {
+			-- 			extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
+			-- 		},
+			-- 	},
+			-- })
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
