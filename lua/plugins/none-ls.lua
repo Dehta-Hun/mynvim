@@ -16,6 +16,7 @@ return {
 				--     cwd = function () return vim.fn.getcwd() end
 				-- }),
 				null_ls.builtins.formatting.stylua,
+                null_ls.builtins.formatting.xmlformat,
 				null_ls.builtins.formatting.ruff.with({
 					"--config",
 					"$HOME/.config/ruff.toml",
