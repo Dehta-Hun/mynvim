@@ -36,7 +36,10 @@ vim.filetype.add({
 	extension = {
 		bpt = "xml", -- treat bpt as xml
 	},
-	filename = {},
+	filename = {
+        ['docker-compose.yaml'] = 'yaml.docker-compose',
+        ['docker-compose.yml'] = 'yaml.docker-compose',
+    },
 	pattern = {
 		[".*ansible(.*/?)(.*/?)(.*/?)(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
 	},

@@ -42,6 +42,7 @@ return {
 			})
 			lspconfig.ansiblels.setup({})
 			lspconfig.remark_ls.setup({})
+            lspconfig.docker_compose_language_service.setup({})
 			lspconfig.jedi_language_server.setup({
 				init_options = {
 					workspace = {
