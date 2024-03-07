@@ -41,13 +41,13 @@ vim.filetype.add({
         ['docker-compose.yml'] = 'yaml.docker-compose',
     },
 	pattern = {
-		[".*ansible(.*/?)(.*/?)(.*/?)(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
+		[".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
 	},
 })
 -- RSync repo to testmachine
 vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = function()
-		local path = vim.api.nvim_buf_get_name(0):match(".*projectsGit(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)(.*/?)%w*.$")
+		local path = vim.api.nvim_buf_get_name(0):match(".*projectsGit(.*/?)")
 		if path then
 			os.execute(
 				'tmux new-session -d "rsync -aP ~/projectsGit/Corp-FWaaS qc-fwaas-manual-kvm-mironov.avp.ru:/home/mironov_a/ > /dev/null 2>&1"'
@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		end
 	end,
 })
+
 -- Cyrillic support
-vim.opt.langmap =
-	"йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"
+-- vim.opt.langmap =
+-- 	"йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"

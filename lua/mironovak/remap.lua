@@ -3,6 +3,7 @@ local setkey = vim.keymap.set
 
 setkey("n", "<A-n>", vim.cmd.NvimTreeToggle)
 setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
+setkey("n", "K", vim.lsp.buf.hover)
 
 -- Hide/close deapth level
 setkey({ "n" }, "zo", "za")
