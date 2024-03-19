@@ -20,6 +20,12 @@ return {
 					"ruff_lsp",
 					"lua_ls",
 					"jedi_language_server",
+                    "lemminx",
+                    "remark_ls",
+                    "dockerls",
+                    "docker_compose_language_service",
+                    "jsonls",
+
 				},
 			})
 		end,
@@ -33,6 +39,7 @@ return {
 			lspconfig.lemminx.setup({})
 			lspconfig.remark_ls.setup({})
 			lspconfig.docker_compose_language_service.setup({})
+			lspconfig.dockerls.setup({})
 			lspconfig.jsonls.setup({
 				settings = {
 					json = {
