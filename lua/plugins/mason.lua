@@ -25,7 +25,7 @@ return {
                     "dockerls",
                     "docker_compose_language_service",
                     "jsonls",
-
+                    "yamlls",
 				},
 			})
 		end,
@@ -35,6 +35,7 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({})
+			lspconfig.yamlls.setup({})
 			lspconfig.ansiblels.setup({})
 			lspconfig.lemminx.setup({})
 			lspconfig.remark_ls.setup({})

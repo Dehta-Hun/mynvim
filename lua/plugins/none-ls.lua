@@ -7,6 +7,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.yamlfmt,
 			},
 		})
 		vim.keymap.set("n", "gq", vim.lsp.buf.format, {})
