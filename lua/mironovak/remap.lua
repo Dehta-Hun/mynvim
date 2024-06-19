@@ -56,6 +56,6 @@ setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 
 local buffdelete = function()
 	vim.cmd.bdelete()
-	vim.cmd.bnext()
+	vim.cmd.bprev()
 end
 setkey("n", "<leader>bd", buffdelete)
