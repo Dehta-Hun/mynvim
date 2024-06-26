@@ -1,7 +1,5 @@
 require("mironovak")
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins")
+require("config.lazy")
 require("telescope").setup({
 	defaults = { -- -- убрать локал если что то пойдет не так
 		vimgrep_arguments = {
