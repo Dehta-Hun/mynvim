@@ -37,9 +37,9 @@ vim.filetype.add({
 		bpt = "xml", -- treat bpt as xml
 	},
 	filename = {
-        ['docker-compose.yaml'] = 'yaml.docker-compose',
-        ['docker-compose.yml'] = 'yaml.docker-compose',
-    },
+		["docker-compose.yaml"] = "yaml.docker-compose",
+		["docker-compose.yml"] = "yaml.docker-compose",
+	},
 	pattern = {
 		[".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
 	},
@@ -55,7 +55,3 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		end
 	end,
 })
-
--- Cyrillic support
--- vim.opt.langmap =
--- 	"йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?"

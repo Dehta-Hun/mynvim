@@ -43,7 +43,7 @@ return {
 				number = true,
 				side = "left",
 				width = {
-					max = 35,
+					max = 45,
 					min = 20,
 				},
 				signcolumn = "no",
