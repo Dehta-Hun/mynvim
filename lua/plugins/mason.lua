@@ -16,7 +16,6 @@ return {
 					"lua_ls",
 					"jedi_language_server",
 					"lemminx",
-					"remark_ls",
 					"dockerls",
 					"docker_compose_language_service",
 					"jsonls",
@@ -33,31 +32,9 @@ return {
 				settings = {
 					yaml = {
 						format = {
-							enable = true,
+							enable = false,
 						},
 						customTags = "import",
-					},
-				},
-				on_attach = function(client, bufnr)
-					if client.name == "yamlls" then
-						client.capabilities.document_formatting = true
-					end
-				end,
-			})
-			lspconfig.pyright.setup({
-				settings = {
-					pyright = {
-						-- Using Ruff's import organizer
-						disableOrganizeImports = true,
-					},
-					python = {
-						pythonPath = "/home/mironov_a/.virtualenv/ngfw/bin/python",
-						-- venvPath = "~/.virtualenv/",
-						-- venv = "~/.virtualenv/ngfw-ktt-py3.8/",
-						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
-							ignore = { "*" },
-						},
 					},
 				},
 			})
@@ -86,10 +63,26 @@ return {
 					end
 				end,
 			})
+			lspconfig.pyright.setup({
+				settings = {
+					pyright = {
+						-- Using Ruff's import organizer
+						disableOrganizeImports = true,
+					},
+					python = {
+						pythonPath = "/home/mironov_a/.virtualenv/ngfw/bin/python",
+						-- venvPath = "~/.virtualenv/",
+						-- venv = "~/.virtualenv/ngfw-ktt-py3.8/",
+						analysis = {
+							-- Ignore all files for analysis to exclusively use Ruff for linting
+							ignore = { "*" },
+						},
+					},
+				},
+			})
 			lspconfig.lua_ls.setup({})
 			lspconfig.ansiblels.setup({})
 			lspconfig.lemminx.setup({})
-			lspconfig.remark_ls.setup({})
 			lspconfig.docker_compose_language_service.setup({})
 			lspconfig.dockerls.setup({})
 			-- lspconfig.jedi_language_server.setup({
