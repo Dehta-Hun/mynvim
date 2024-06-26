@@ -13,6 +13,8 @@ setkey({ "n", "v" }, "<Esc>", vim.cmd.noh)
 setkey("v", "J", ":m '>+1<CR>gv=gv")
 setkey("v", "K", ":m '<-2<CR>gv=gv")
 
+setkey("n", "ge", vim.diagnostic.goto_next)
+
 setkey({ "n", "v" }, "<C-h>", "<C-w>h")
 setkey({ "n", "v" }, "<C-l>", "<C-w>l")
 setkey({ "n", "v" }, "<C-k>", "<C-w>k")
