@@ -10,6 +10,8 @@ return {
 				null_ls.builtins.formatting.yamlfix.with({
 					extra_args = { "--config-file", vim.fn.expand("~/.config/nvim/lua/configs/yamlfix.toml") },
 				}),
+                -- null_ls.builtins.diagnostics.pylint,
+                -- null_ls.builtins.diagnostics.mypy,
 				null_ls.builtins.diagnostics.yamllint.with({
 					extra_args = { "-c", vim.fn.expand("~/.config/nvim/lua/configs/yamllint.yaml") },
 				}),
