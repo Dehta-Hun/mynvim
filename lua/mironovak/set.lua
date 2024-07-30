@@ -21,7 +21,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.timeoutlen = 800
 
--- vim.opt.ignorecase = true
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.formatoptions = "cro"
 
