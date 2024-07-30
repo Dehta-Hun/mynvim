@@ -25,6 +25,7 @@ return {
 			filters = {
 				dotfiles = false,
 				git_ignored = false,
+                custom = { "^.git$" },
 				--    exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
 			},
 			disable_netrw = true,
