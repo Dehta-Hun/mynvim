@@ -35,7 +35,7 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
 				{ name = "buffer" },
-                { name = "path" },
+				{ name = "path" },
 			}),
 		})
 		-- Set configuration for specific filetype.
@@ -68,6 +68,9 @@ return {
 			capabilities = capabilities,
 		})
 		require("lspconfig")["ruff_lsp"].setup({
+			root_dir = function(fname)
+				return vim.fn.getcwd()
+			end,
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

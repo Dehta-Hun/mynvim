@@ -11,7 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"ansiblels",
-					-- "ruff_lsp",
+					"ruff_lsp",
 					"lua_ls",
 					"jedi_language_server",
 					"lemminx",
@@ -54,44 +54,22 @@ return {
 					},
 				},
 			})
-			lspconfig.ruff_lsp.setup({
-				-- on_attach = function(client, bufnr)
-				-- 	if client.name == "ruff_lsp" then
-				-- 		-- Disable hover in favor of Pyright
-				-- 		client.server_capabilities.hoverProvider = false
-				-- 	end
-				-- end,
-			})
-			-- lspconfig.pyright.setup({
-			-- 	settings = {
-			-- 		pyright = {
-			-- 			-- Using Ruff's import organizer
-			-- 			disableOrganizeImports = true,
-			-- 		},
-			-- 		python = {
-			-- 			-- pythonPath = "/home/mironov_a/.virtualenv/ngfw/bin/python",
-			-- 			-- venvPath = "~/.virtualenv/",
-			-- 			-- venv = "~/.virtualenv/ngfw-ktt-py3.8/",
-			-- 			analysis = {
-			-- 				-- Ignore all files for analysis to exclusively use Ruff for linting
-			-- 				ignore = { "*" },
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
+            lspconfig.jedi_language_server.setup({
+                root_dir = function(fname)
+                    return vim.fn.getcwd()
+                end,
+                init_options = {
+                    workspace = {
+                        -- extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
+                    },
+                },
+            })
+			-- lspconfig.ruff_lsp.setup({}) # configured in cmp.lua
 			lspconfig.lua_ls.setup({})
 			lspconfig.ansiblels.setup({})
 			lspconfig.lemminx.setup({})
 			lspconfig.docker_compose_language_service.setup({})
 			lspconfig.dockerls.setup({})
-			lspconfig.jedi_language_server.setup({
-				init_options = {
-					workspace = {
-						-- extraPaths = { "/home/mironov_a/projectsGit/ci-test-scenarios/" },
-					},
-				},
-			         })
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
 }

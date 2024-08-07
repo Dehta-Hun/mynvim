@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		local path = vim.api.nvim_buf_get_name(0):match(".*projectsGit(.*/?)")
 		if path then
 			os.execute(
-				'tmux new-session -d "rsync -aP ~/projectsGit/Corp-FWaaS qc-fwaas-manual-kvm-mironov.avp.ru:/home/mironov_a/ > /dev/null 2>&1"'
+				'tmux new-session -d "rsync -aP ~/projectsGit/Corp-FWaaS qc-fwaas-manual-kvm-mironov.avp.ru: > /dev/null 2>&1"'
 			)
 		end
 	end,

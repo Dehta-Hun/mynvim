@@ -60,3 +60,4 @@ local buffdelete = function()
 	vim.cmd.bprev()
 end
 setkey("n", "<leader>bd", buffdelete)
+setkey({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
