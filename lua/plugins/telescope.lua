@@ -7,11 +7,39 @@ return {
 		local builtin = require("telescope.builtin")
 		local keymap = vim.keymap.set
 		local opts = { noremap = true, silent = true }
-		local pickers = { -- убрать локал если что то пойдет не так
-			find_files = {
-				hidden = true,
+		require("telescope").setup({
+			defaults = {
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"-uu",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+                    "--glob=!**/.git/*",
+				},
 			},
-		}
+			pickers = {
+				find_files = {
+					hidden = true,
+					find_command = {
+						"rg",
+						"--files",
+						"--color=never",
+						"-uu",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+                        "--glob=!**/.git/*",
+					},
+				},
+			},
+		})
+
 		function vim.getVisualSelection()
 			vim.cmd('noau normal! "vy"')
 			local text = vim.fn.getreg("v")
@@ -52,5 +80,9 @@ return {
 			local text = vim.getVisualSelection()
 			builtin.current_buffer_fuzzy_find({ default_text = text })
 		end, opts)
+
+		keymap("n", "<leader>fd", function()
+			builtin.diagnostics({ bufnr = 0 })
+		end, {})
 	end,
 }
