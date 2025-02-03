@@ -50,11 +50,8 @@ setkey("v", "<C-c>", '"+y')
 setkey("n", "<C-n>", vim.cmd.bnext)
 setkey("n", "<C-p>", vim.cmd.bprev)
 
--- Ranger toggle
--- setkey({ "n", "t", "v" }, "<A-r>", vim.cmd.RnvimrToggle)
-
 setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-
+setkey ("v", "$", "g_")
 local buffdelete = function()
 	vim.cmd.bdelete()
 	vim.cmd.bprev()
