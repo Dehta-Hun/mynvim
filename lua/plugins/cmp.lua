@@ -70,8 +70,8 @@ return {
         require("lspconfig")["ruff_lsp"].setup({
             init_options = {
                 settings = {
+                    configuration = "~/projectsGit/Corp-FWaaS/test/pyproject.toml",
                     args = {
-                        config = "/home/mironov_a/projectsGit/Corp-FWaaS/test/pyproject.toml",
                     },
                 },
             },
