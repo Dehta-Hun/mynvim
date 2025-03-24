@@ -1,2 +1,2 @@
-require("mironovak")
 require("config.lazy")
+require("mironovak")

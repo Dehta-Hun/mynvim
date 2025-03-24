@@ -15,10 +15,10 @@ setkey("v", "K", ":m '<-2<CR>gv=gv")
 
 setkey("n", "ge", vim.diagnostic.goto_next)
 
-setkey({ "n", "v" }, "<C-h>", "<C-w>h")
-setkey({ "n", "v" }, "<C-l>", "<C-w>l")
-setkey({ "n", "v" }, "<C-k>", "<C-w>k")
-setkey({ "n", "v" }, "<C-j>", "<C-w>j")
+-- setkey({ "n", "v" }, "<C-h>", "<C-w>h")
+-- setkey({ "n", "v" }, "<C-l>", "<C-w>l")
+-- setkey({ "n", "v" }, "<C-k>", "<C-w>k")
+-- setkey({ "n", "v" }, "<C-j>", "<C-w>j")
 
 setkey({ "n", "v" }, "<A-h>", "<C-w><")
 setkey({ "n", "v" }, "<A-l>", "<C-w>>")
@@ -51,7 +51,7 @@ setkey("n", "<C-n>", vim.cmd.bnext)
 setkey("n", "<C-p>", vim.cmd.bprev)
 
 setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-setkey ("v", "$", "g_")
+setkey("v", "$", "g_")
 local buffdelete = function()
 	vim.cmd.bdelete()
 	vim.cmd.bprev()

@@ -11,7 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"ansiblels",
-					"ruff_lsp",
+					"ruff",
 					"lua_ls",
 					"jedi_language_server",
 					"lemminx",
@@ -64,7 +64,6 @@ return {
                     },
                 },
             })
-			-- lspconfig.ruff_lsp.setup({}) # configured in cmp.lua
 			lspconfig.lua_ls.setup({})
 			lspconfig.ansiblels.setup({})
 			lspconfig.lemminx.setup({})
