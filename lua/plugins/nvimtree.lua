@@ -25,7 +25,7 @@ return {
 			filters = {
 				dotfiles = false,
 				git_ignored = false,
-                custom = { "^.git$" },
+				custom = { "^.git$" },
 				--    exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
 			},
 			disable_netrw = true,
@@ -35,7 +35,7 @@ return {
 			sync_root_with_cwd = true,
 			update_focused_file = {
 				enable = true,
-				update_root = false,
+				update_root = true,
 			},
 			view = {
 				adaptive_size = true,
@@ -64,11 +64,12 @@ return {
 			},
 			renderer = {
 				root_folder_label = false,
-				highlight_git = false,
-				highlight_opened_files = "none",
-
+				highlight_git = true,
+				highlight_opened_files = "all",
+                indent_width = 1,
 				indent_markers = {
-					enable = false,
+					enable = true,
+                    inline_arrows = false,
 				},
 
 				icons = {
@@ -77,6 +78,7 @@ return {
 						folder = true,
 						folder_arrow = true,
 						git = true,
+                        diagnostics = true,
 					},
 
 					glyphs = {
