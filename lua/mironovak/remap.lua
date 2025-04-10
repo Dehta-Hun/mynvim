@@ -4,7 +4,7 @@ local setkey = vim.keymap.set
 setkey("n", "<A-n>", vim.cmd.NvimTreeToggle)
 setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
 setkey("n", "K", vim.lsp.buf.hover)
-
+setkey("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 -- Hide/close deapth level
 setkey({ "n" }, "zo", "za")
 setkey({ "n" }, "zO", "zA")
@@ -53,8 +53,8 @@ setkey("n", "<C-p>", vim.cmd.bprev)
 setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 setkey("v", "$", "g_")
 local buffdelete = function()
-    vim.cmd.bdelete()
-    vim.cmd.bprev()
+	vim.cmd.bdelete()
+	vim.cmd.bprev()
 end
 setkey("n", "<leader>bd", buffdelete)
 setkey({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
