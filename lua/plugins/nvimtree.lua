@@ -66,10 +66,10 @@ return {
 				root_folder_label = false,
 				highlight_git = true,
 				highlight_opened_files = "all",
-                indent_width = 1,
+				indent_width = 1,
 				indent_markers = {
 					enable = true,
-                    inline_arrows = false,
+					inline_arrows = false,
 				},
 
 				icons = {
@@ -78,7 +78,7 @@ return {
 						folder = true,
 						folder_arrow = true,
 						git = true,
-                        diagnostics = true,
+						diagnostics = true,
 					},
 
 					glyphs = {
