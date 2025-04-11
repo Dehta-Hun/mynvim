@@ -5,6 +5,7 @@ return {
 		require("notify").setup({
 			max_width = 50,
 			max_height = 5,
+			merge_duplicates = true,
 		})
 		local banned_messages = { "All parsers are up-to-date!" }
 		vim.notify = function(msg, ...)
