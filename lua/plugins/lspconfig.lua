@@ -26,28 +26,18 @@ return {
 				},
 			},
 		})
-		lspconfig.yamlls.setup({
-			settings = {
-				yaml = {
-					format = {
-						enable = false,
-					},
-					customTags = "import",
-				},
-			},
-		})
 		lspconfig.jsonls.setup({
 			settings = {
 				json = {
 					schemas = require("schemastore").json.schemas({
-						extra = {
-							{
-								description = "My custom JSON schema",
-								fileMatch = "test_conf.in.json",
-								name = "test_conf.in.json",
-								url = "/home/mironov_a/.config/schema.json",
-							},
-						},
+						-- extra = {
+						-- 	{
+						-- 		description = "My custom JSON schema",
+						-- 		fileMatch = "test_conf.in.json",
+						-- 		name = "test_conf.in.json",
+						-- 		url = "$HOME/.cache/schema.json",
+						-- 	},
+						-- },
 					}),
 					validate = { enable = true },
 				},

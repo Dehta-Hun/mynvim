@@ -3,7 +3,6 @@ local setkey = vim.keymap.set
 
 setkey("n", "<A-n>", vim.cmd.NvimTreeToggle)
 setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
-setkey("n", "K", vim.lsp.buf.hover)
 setkey("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 -- Hide/close deapth level
 setkey({ "n" }, "zo", "za")
@@ -13,7 +12,9 @@ setkey({ "n", "v" }, "<Esc>", vim.cmd.noh)
 setkey("v", "J", ":m '>+1<CR>gv=gv")
 setkey("v", "K", ":m '<-2<CR>gv=gv")
 
-setkey("n", "ge", vim.diagnostic.goto_next)
+setkey("n", "ge", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
 
 -- setkey({ "n", "v" }, "<C-h>", "<C-w>h")
 -- setkey({ "n", "v" }, "<C-l>", "<C-w>l")
@@ -50,11 +51,23 @@ setkey("v", "<C-c>", '"+y')
 setkey("n", "<C-n>", vim.cmd.bnext)
 setkey("n", "<C-p>", vim.cmd.bprev)
 
-setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 setkey("v", "$", "g_")
 local buffdelete = function()
 	vim.cmd.bdelete()
 	vim.cmd.bprev()
 end
 setkey("n", "<leader>bd", buffdelete)
+
+--lsp keybinds
 setkey({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+setkey("n", "K", vim.lsp.buf.hover)
+setkey("n", "<leader>r", vim.lsp.buf.rename, bufopts)
+setkey("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
+
+--git
+local open_buf_dif = function()
+    vim.cmd.NvimTreeClose()
+	vim.cmd.windo("diffthis")
+end
+setkey({ "n" }, "<leader>gdb", open_buf_dif)
+setkey({ "n" }, "<leader>gdc", vim.cmd.diffoff)

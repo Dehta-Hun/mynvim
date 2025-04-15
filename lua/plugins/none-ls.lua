@@ -12,9 +12,9 @@ return {
 				null_ls.builtins.diagnostics.yamllint.with({
 					extra_args = { "-c", vim.fn.expand("~/.config/nvim/lua/configs/yamllint.yaml") },
 				}),
-                -- null_ls.builtins.formatting.ruff,
-                -- null_ls.builtins.diagnostics.pylint,
-                -- null_ls.builtins.diagnostics.mypy,
+				-- null_ls.builtins.formatting.ruff,
+				-- null_ls.builtins.diagnostics.pylint,
+				-- null_ls.builtins.diagnostics.mypy,
 			},
 		})
 		vim.keymap.set("n", "gq", vim.lsp.buf.format, {})

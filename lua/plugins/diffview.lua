@@ -2,6 +2,6 @@ return {
 	"sindrets/diffview.nvim",
 	lazy = false,
 	config = function()
-		vim.keymap.set("n", "<leader>gd", vim.cmd.DiffviewOpen)
+		vim.keymap.set("n", "<leader>gD", vim.cmd.DiffviewOpen)
 	end,
 }
