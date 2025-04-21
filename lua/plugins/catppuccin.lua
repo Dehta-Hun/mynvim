@@ -11,7 +11,7 @@ return {
 				notify = true,
 				telescope = {
 					enabled = true,
-					style = "nvchad",
+					-- style = "nvchad",
 				},
 				harpoon = true,
 				nvimtree = true,
