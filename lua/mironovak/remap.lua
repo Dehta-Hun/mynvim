@@ -69,5 +69,5 @@ local open_buf_dif = function()
     vim.cmd.NvimTreeClose()
 	vim.cmd.windo("diffthis")
 end
-setkey({ "n" }, "<leader>gdb", open_buf_dif)
-setkey({ "n" }, "<leader>gdc", vim.cmd.diffoff)
+setkey({ "n" }, "<leader>GDB", open_buf_dif)
+setkey({ "n" }, "<leader>GDC", vim.cmd.diffoff)
