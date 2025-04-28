@@ -4,7 +4,6 @@
         "window"
     ],
     "diagnostics.disable": [
-        "undefined-global",
-        "unused-local"
+        "undefined-global"
     ]
 }

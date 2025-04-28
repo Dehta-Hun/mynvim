@@ -66,8 +66,17 @@ setkey("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
 
 --git
 local open_buf_dif = function()
-    vim.cmd.NvimTreeClose()
+	vim.cmd.NvimTreeClose()
 	vim.cmd.windo("diffthis")
 end
 setkey({ "n" }, "<leader>GDB", open_buf_dif)
 setkey({ "n" }, "<leader>GDC", vim.cmd.diffoff)
+
+-- Debug
+setkey("n", "<leader>db", vim.cmd.DapToggleBreakpoint, bufopts)
+setkey("n", "<leader>do", function()
+	vim.cmd.Neotest("output-panel")
+end)
+setkey("n", "<leader>dr", function()
+	require("neotest").run.run({ strategy = "dap" })
+end)
