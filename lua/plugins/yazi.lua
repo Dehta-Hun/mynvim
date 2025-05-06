@@ -10,8 +10,8 @@ return {
         -- 👇 in this section, choose your own keymappings!
         {
             "<A-r>",
-            mode = { "n", "v" },
-            "<cmd>Yazi<cr>",
+            mode = { "n", "v", "t" },
+            "<cmd>Yazi toggle<cr>",
             desc = "Open yazi at the current file",
         },
         {

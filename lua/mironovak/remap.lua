@@ -32,6 +32,8 @@ setkey("t", "<C-k>", "<C-\\><C-n><C-w>k")
 setkey("t", "<C-j>", "<C-\\><C-n><C-w>j")
 setkey("t", "<Esc>", "<C-\\><C-n>")
 
+setkey("i", "<C-Right>", "<Esc>ea")
+
 setkey("n", "<C-d>", "<C-d>zz")
 setkey("n", "<C-u>", "<C-u>zz")
 setkey("n", "G", "Gzz")
