@@ -5,13 +5,12 @@ return {
     },
     lazy = false,
     config = function()
-        -- vim.cmd.colorscheme("tomorrow-night")
         require("lualine").setup({
             options = {
                 always_divide_middle = true,
                 -- ... your lualine config
                 globalstatus = true,
-                theme = "base16",
+                theme = "catppuccin"
                 -- ... your lualine config
             },
             sections = {
