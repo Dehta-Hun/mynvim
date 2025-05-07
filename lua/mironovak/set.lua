@@ -37,34 +37,34 @@ vim.opt.cursorline = true
 vim.cmd("let g:rnvimr_enable_picker = 1")
 
 vim.filetype.add({
-	extension = {
-		bpt = "xml", -- treat bpt as xml
-	},
-	filename = {
-		["docker-compose.yaml"] = "yaml.docker-compose",
-		["docker-compose.yml"] = "yaml.docker-compose",
-	},
-	pattern = {
-		[".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
-	},
+    extension = {
+        bpt = "xml", -- treat bpt as xml
+    },
+    filename = {
+        ["docker-compose.yaml"] = "yaml.docker-compose",
+        ["docker-compose.yml"] = "yaml.docker-compose",
+    },
+    pattern = {
+        [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
+    },
 })
 -- RSync repo to testmachine
 vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		local path = vim.api.nvim_buf_get_name(0): match(".*Corp.FWaaS.*")
-		if path then
-			os.execute(
-				'tmux new-session -d "rsync -aP ~/Corp-FWaaS qc-fwaas-manual-kvm-mironov-2.avp.ru: > /dev/null 2>&1"'
-			)
-		end
-	end,
+    callback = function()
+        local path = vim.api.nvim_buf_get_name(0):match(".*Corp.FWaaS.*")
+        if path then
+            os.execute(
+                'tmux new-session -d "rsync -aP ~/Corp-FWaaS qc-fwaas-manual-kvm-mironov-2.avp.ru: > /dev/null 2>&1"'
+            )
+        end
+    end,
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
-		if path then
-			os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
-			vim.cmd.checktime()
-		end
-	end,
+    callback = function()
+        local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
+        if path then
+            os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
+            vim.cmd.checktime()
+        end
+    end,
 })
