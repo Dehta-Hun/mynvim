@@ -18,7 +18,6 @@ return {
                     -- the default case_mode is "smart_case"
                 },
             },
-            require("telescope").load_extension("fzf"),
             defaults = {
                 layout_config = {
                     horizontal = { width = 0.99 },
@@ -63,6 +62,8 @@ return {
             },
         })
 
+        require("telescope").load_extension("fzf")
+
         function vim.getVisualSelection()
             vim.cmd('noau normal! "vy"')
             local text = vim.fn.getreg("v")
@@ -76,7 +77,7 @@ return {
             end
         end
 
-        keymap("n", "<leader>ff", builtin.find_files, {})
+        -- keymap("n", "<leader>ff", builtin.find_files, {})
         keymap("v", "<leader>ff", function()
             local text = vim.getVisualSelection()
             builtin.find_files({ default_text = text })
@@ -88,24 +89,24 @@ return {
             builtin.git_files({ default_text = text })
         end, opts)
 
-        keymap("n", "<leader>fs", function()
-            local nvim_tree_api = require("nvim-tree.api")
-            local nvim_tree_util = require("nvim-tree.utils")
-            local core = require("nvim-tree.core")
-            local node = require("nvim-tree.node")
-            local cwd = core.get_cwd()
-        end)
-        keymap("n", "<leader>fs", builtin.live_grep, {})
+        -- keymap("n", "<leader>fs", function()
+        --     local nvim_tree_api = require("nvim-tree.api")
+        --     local nvim_tree_util = require("nvim-tree.utils")
+        --     local core = require("nvim-tree.core")
+        --     local node = require("nvim-tree.node")
+        --     local cwd = core.get_cwd()
+        -- end)
+        -- keymap("n", "<leader>fs", builtin.live_grep, {})
         keymap("v", "<leader>fs", function()
             local text = vim.getVisualSelection()
             builtin.live_grep({ default_text = text })
         end, opts)
 
-        keymap("n", "<leader>fb", builtin.buffers, {})
+        -- keymap("n", "<leader>fb", builtin.buffers, {})
 
         keymap("n", "<leader>fh", builtin.help_tags, {})
 
-        keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
+        -- keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
         keymap("v", "<leader>fz", function()
             local text = vim.getVisualSelection()
             builtin.current_buffer_fuzzy_find({ default_text = text })

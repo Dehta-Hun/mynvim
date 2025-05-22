@@ -15,6 +15,19 @@ return {
             },
             sections = {
                 lualine_x = { "searchcount", "filetype" },
+                lualine_b = {
+                    "diff",
+                    {
+                        "diagnostics",
+                        symbols = {
+                            error = " ",
+                            warn = " ",
+                            info = " ",
+                            hint = " ",
+                        },
+                    },
+                },
+                lualine_c = {},
                 lualine_a = {
                     {
                         "buffers",
