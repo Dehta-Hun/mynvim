@@ -7,9 +7,18 @@ return {
     -- dependencies = { "echasnovski/mini.icons" },
     opts = {},
     config = function()
+        _G.fzf_smart_case = true
+        function _G.toggle_fzf_smart_case()
+            _G.fzf_smart_case = not _G.fzf_smart_case
+            vim.notify("fzf-lua smart_case: " .. tostring(_G.fzf_smart_case), vim.log.levels.INFO)
+        end
+
         local keymap = vim.keymap.set
         local fzf = require("fzf-lua")
+        local actions = require("fzf-lua").actions
         require("fzf-lua").setup({
+            -- Global toggle variable
+
             { "telescope", "fzf-native" },
             winopts = {
                 height = 0.4, -- dropdown height
@@ -22,11 +31,35 @@ return {
                     hidden = false, -- disable preview like dropdown
                 },
             },
+            actions = {
+                -- Below are the default actions, setting any value in these tables will override
+                -- the defaults, to inherit from the defaults change [1] from `false` to `true`
+                toggle_case_flag = "--smart-case",
+                files = {
+                    -- true,        -- uncomment to inherit all the below in your custom config
+                    -- Pickers inheriting these actions:
+                    --   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
+                    --   tags, btags, args, buffers, tabs, lines, blines
+                    -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
+                    -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
+                    -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
+                    ["enter"] = actions.file_edit_or_qf,
+                    ["ctrl-o"] = actions.toggle_case,
+                    ["ctrl-s"] = actions.file_split,
+                    ["ctrl-v"] = actions.file_vsplit,
+                    -- ["ctrl-t"] = actions.file_tabedit,
+                    ["alt-q"] = actions.file_sel_to_qf,
+                    -- ["alt-Q"] = actions.file_sel_to_ll,
+                    -- ["alt-i"] = actions.toggle_ignore,
+                    -- ["alt-h"] = actions.toggle_hidden,
+                    -- ["alt-f"] = actions.toggle_follow,
+                },
+            },
             files = {
                 previewer = "bat", -- uncomment to override previewer
                 -- (name from 'previewers' table)
                 -- set to 'false' to disable
-                prompt = "Files❯ ",
+                prompt = "Files❯ ASDFASDF",
                 multiprocess = true, -- run command in a separate process
                 git_icons = true, -- show git icons?
                 file_icons = true, -- show file icons (true|"devicons"|"mini")?
@@ -61,15 +94,93 @@ return {
                     -- inherits from 'actions.files', here we can override
                     -- or set bind to 'false' to disable a default action
                     -- uncomment to override `actions.file_edit_or_qf`
-                    --   ["enter"]     = actions.file_edit,
+                    ["enter"] = actions.file_edit,
                     -- custom actions are available too
                     --   ["ctrl-y"]    = function(selected) print(selected[1]) end,
                 },
             },
+            grep = {
+                prompt = "Rg❯ ",
+                input_prompt = "Grep For❯ ",
+                multiprocess = true, -- run command in a separate process
+                git_icons = false, -- show git icons?
+                file_icons = true, -- show file icons (true|"devicons"|"mini")?
+                color_icons = true, -- colorize file|git icons
+                -- executed command priority is 'cmd' (if exists)
+                -- otherwise auto-detect prioritizes `rg` over `grep`
+                -- default options are controlled by 'rg|grep_opts'
+                -- cmd            = "rg --vimgrep",
+                grep_opts = function()
+                    if _G.fzf_smart_case then
+                        return "--binary-files=without-match --line-number --recursive --color=auto --smart_case --perl-regexp -e"
+                    else
+                        return "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e"
+                    end
+                end,
+                rg_opts = function()
+                    vim.notify("fzf-lua smart_case: " .. tostring(_G.fzf_smart_case), vim.log.levels.INFO)
+                    if _G.fzf_smart_case then
+                        return "--column --line-number --no-heading --smart_case --color=always --max-columns=4096 -e"
+                    else
+                        return "--column --line-number --no-heading --color=always --max-columns=4096 -e"
+                    end
+                end,
+                hidden = false, -- disable hidden files by default
+                -- toggle_case_flag = "--smart-case",
+                follow = false, -- do not follow symlinks by default
+                no_ignore = false, -- respect ".gitignore"  by default
+                -- Uncomment to use the rg config file `$RIPGREP_CONFIG_PATH`
+                -- RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+                --
+                -- Set to 'true' to always parse globs in both 'grep' and 'live_grep'
+                -- search strings will be split using the 'glob_separator' and translated
+                -- to '--iglob=' arguments, requires 'rg'
+                -- can still be used when 'false' by calling 'live_grep_glob' directly
+                rg_glob = true, -- default to glob parsing with `rg`
+                glob_flag = "--iglob", -- for case sensitive globs use '--glob'
+                glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
+                -- advanced usage: for custom argument parsing define
+                -- 'rg_glob_fn' to return a pair:
+                --   first returned argument is the new search query
+                --   second returned argument are additional rg flags
+                -- rg_glob_fn = function(query, opts)
+                --   ...
+                --   return new_query, flags
+                -- end,
+                --
+                -- Enable with narrow term width, split results to multiple lines
+                -- NOTE: multiline requires fzf >= v0.53 and is ignored otherwise
+                -- multiline      = 1,      -- Display as: PATH:LINE:COL\nTEXT
+                -- multiline      = 2,      -- Display as: PATH:LINE:COL\nTEXT\n
+                actions = {
+                    ["ctrl-o"] = actions.toggle_case,
+                    -- actions inherit from 'actions.files' and merge
+                    -- this action toggles between 'grep' and 'live_grep'
+                    ["ctrl-g"] = { actions.grep_lgrep },
+                    -- uncomment to enable '.gitignore' toggle for grep
+                    ["ctrl-r"] = { actions.toggle_ignore },
+                    -- ["ctrl-c"] = { actions.toggle_case },
+                },
+                no_header = false, -- hide grep|cwd header?
+                no_header_i = false, -- hide interactive header?
+            },
         })
+        -- keymap("n", "<leader>fs", fzf.live_grep, opts)
         keymap("n", "<leader>fb", fzf.buffers, opts)
         keymap("n", "<leader>ff", fzf.files, opts)
-        keymap("n", "<leader>fs", fzf.live_grep, opts)
         keymap("n", "<leader>fz", fzf.grep_curbuf, opts)
+        local result_test = function()
+            if _G.fzf_smart_case then
+                return "--column --line-number --no-heading --smart-case --color=always --max-columns=4096 -e"
+            else
+                return "--column --line-number --no-heading --color=always --max-columns=4096 -e"
+            end
+        end
+        keymap("n", "<leader>fs", function()
+            require("fzf-lua").live_grep({
+                rg_opts = result_test(),
+            })
+        end)
+        keymap({ "n", "t" }, "<C-x>", toggle_fzf_smart_case, { desc = "Toggle fzf smart_case" })
     end,
 }
