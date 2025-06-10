@@ -14,7 +14,6 @@ return {
                 null_ls.builtins.diagnostics.yamllint.with({
                     extra_args = { "-c", vim.fn.expand("~/.config/nvim/lua/plugins/format_diagn/yamllint.yaml") },
                 }),
-                -- null_ls.builtins.formatting.ruff,
                 -- null_ls.builtins.diagnostics.pylint,
                 -- null_ls.builtins.diagnostics.mypy,
             },
