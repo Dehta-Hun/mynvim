@@ -96,7 +96,7 @@ return {
         --     local node = require("nvim-tree.node")
         --     local cwd = core.get_cwd()
         -- end)
-        -- keymap("n", "<leader>fs", builtin.live_grep, {})
+        keymap("n", "<leader>fs", builtin.live_grep, {})
         keymap("v", "<leader>fs", function()
             local text = vim.getVisualSelection()
             builtin.live_grep({ default_text = text })
