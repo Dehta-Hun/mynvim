@@ -5,6 +5,8 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
+                null_ls.builtins.formatting.biome,
+                null_ls.builtins.formatting.tidy,
 				null_ls.builtins.formatting.yamlfix.with({
 					extra_args = { "--config-file", vim.fn.expand("~/.config/nvim/lua/configs/yamlfix.toml") },
 				}),
