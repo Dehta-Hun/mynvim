@@ -9,7 +9,14 @@ return {
         local lspconfig = require("lspconfig")
 
         lspconfig.ansiblels.setup({})
+        lspconfig.ts_ls.setup({})
         lspconfig.lemminx.setup({})
+        local capabilities_make = vim.lsp.protocol.make_client_capabilities()
+        capabilities_make.textDocument.completion.completionItem.snippetSupport = true
+        vim.lsp.config('html', {
+            capabilities = capabilities_make,
+        })
+        lspconfig.html.setup({})
         lspconfig.docker_compose_language_service.setup({})
         lspconfig.dockerls.setup({})
         lspconfig.jsonls.setup({
@@ -29,9 +36,9 @@ return {
             },
         })
         require("lspconfig")["lua_ls"].setup({})
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
         lspconfig.lua_ls.setup({
-            capabilities = capabilities,
+            capabilities = capabilities_nvim_lsp,
             -- on_attach = function(client, bufnr)
             --     if client.supports_method("textDocument/formatting") then
             --         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -60,7 +67,7 @@ return {
             root_dir = function()
                 return vim.fn.getcwd()
             end,
-            capabilities = capabilities,
+            -- capabilities = capabilities_nvim_lsp,
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
