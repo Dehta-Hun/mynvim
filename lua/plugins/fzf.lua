@@ -165,10 +165,10 @@ return {
                 no_header_i = false, -- hide interactive header?
             },
         })
-        -- keymap("n", "<leader>fs", fzf.live_grep, opts)
+        keymap("n", "<leader>fs", fzf.live_grep, opts)
         keymap("n", "<leader>fb", fzf.buffers, opts)
         keymap("n", "<leader>ff", fzf.files, opts)
-        keymap("n", "<leader>fc", fzf.grep_curbuf, opts)
+        keymap("n", "<leader>fg", fzf.grep_curbuf, opts)
         local result_test = function()
             if _G.fzf_smart_case then
                 return "--column --line-number --no-heading --smart-case --color=always --max-columns=4096 -e"
