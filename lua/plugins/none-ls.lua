@@ -17,8 +17,6 @@ return {
                 null_ls.builtins.formatting.biome,
                 null_ls.builtins.formatting.tidy,
                 -- null_ls.builtins.formatting.ruff,
-                -- null_ls.builtins.diagnostics.pylint,
-                -- null_ls.builtins.diagnostics.mypy,
             },
         })
         vim.keymap.set("n", "gq", vim.lsp.buf.format, {})
