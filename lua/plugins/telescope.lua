@@ -32,6 +32,7 @@ return {
                     "--column",
                     "--smart-case",
                     "--glob=!**/.git/*",
+                    "--glob=!**__pycache__/*",
                 },
             },
             pickers = {
@@ -48,6 +49,7 @@ return {
                         "--column",
                         "--smart-case",
                         "--glob=!**/.git/*",
+                        "--glob=!**__pycache__/*",
                     },
                 },
                 live_grep = {
