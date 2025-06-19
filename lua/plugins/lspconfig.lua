@@ -13,7 +13,7 @@ return {
         lspconfig.lemminx.setup({})
         local capabilities_make = vim.lsp.protocol.make_client_capabilities()
         capabilities_make.textDocument.completion.completionItem.snippetSupport = true
-        vim.lsp.config('html', {
+        vim.lsp.config("html", {
             capabilities = capabilities_make,
         })
         lspconfig.html.setup({})
@@ -57,7 +57,7 @@ return {
                 },
             },
         })
-        require("lspconfig")["ruff"].setup({
+        lspconfig.ruff.setup({
             init_options = {
                 settings = {
                     configuration = "~/Corp-FWaaS/test/pyproject.toml",
@@ -81,6 +81,7 @@ return {
                 end
             end,
         })
+
         vim.diagnostic.config({
             signs = {
                 text = {
