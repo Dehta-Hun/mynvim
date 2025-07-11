@@ -35,7 +35,7 @@ return {
                 workspace = {},
             },
         })
-        require("lspconfig")["lua_ls"].setup({})
+        -- require("lspconfig")["lua_ls"].setup({})
         local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
         lspconfig.lua_ls.setup({
             capabilities = capabilities_nvim_lsp,
@@ -49,7 +49,7 @@ return {
             --                 vim.lsp.buf.format()
             --             end,
             --         })
-            --     end
+            -- end
             -- end,
             settings = {
                 Lua = {
@@ -57,7 +57,7 @@ return {
                 },
             },
         })
-        lspconfig.ruff.setup({
+        require("lspconfig")["ruff"].setup({
             init_options = {
                 settings = {
                     configuration = "~/Corp-FWaaS/test/pyproject.toml",
@@ -67,7 +67,7 @@ return {
             root_dir = function()
                 return vim.fn.getcwd()
             end,
-            -- capabilities = capabilities_nvim_lsp,
+            capabilities = capabilities_nvim_lsp,
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -81,7 +81,6 @@ return {
                 end
             end,
         })
-
         vim.diagnostic.config({
             signs = {
                 text = {

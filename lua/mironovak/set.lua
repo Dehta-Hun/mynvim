@@ -59,12 +59,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         end
     end,
 })
-vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-        local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
-        if path then
-            os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
-            vim.cmd.checktime()
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     callback = function()
+--         local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
+--         if path then
+--             os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
+--             vim.cmd.checktime()
+--         end
+--     end,
+-- })

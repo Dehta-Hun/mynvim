@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 local setkey = vim.keymap.set
 
-setkey("n", "<A-n>", vim.cmd.NvimTreeToggle)
-setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
+    -- vim.cmd.MiniFiles.open)
+-- setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
 setkey("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 -- Hide/close deapth level
 setkey({ "n" }, "zo", "za")
@@ -13,7 +13,7 @@ setkey("v", "J", ":m '>+1<CR>gv=gv")
 setkey("v", "K", ":m '<-2<CR>gv=gv")
 
 setkey("n", "ge", function()
-    vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.jump({ count = -1, float = true })
 end)
 
 -- setkey({ "n", "v" }, "<C-h>", "<C-w>h")
@@ -55,8 +55,8 @@ setkey("n", "<C-p>", vim.cmd.bprev)
 
 setkey("v", "$", "g_")
 local buffdelete = function()
-    vim.cmd.bdelete()
-    vim.cmd.bprev()
+	vim.cmd.bdelete()
+	vim.cmd.bprev()
 end
 setkey("n", "<leader>bd", buffdelete)
 
@@ -68,17 +68,18 @@ setkey("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
 
 --git
 local open_buf_dif = function()
-    vim.cmd.NvimTreeClose()
-    vim.cmd.windo("diffthis")
+	vim.cmd.NvimTreeClose()
+	vim.cmd.windo("diffthis")
 end
-setkey({ "n" }, "<leader>GDB", open_buf_dif)
-setkey({ "n" }, "<leader>GDC", vim.cmd.diffoff)
+setkey({ "n" }, "<leader>DB", open_buf_dif)
+setkey({ "n" }, "<leader>DC", vim.cmd.diffoff)
 
 -- Debug
 setkey("n", "<leader>db", vim.cmd.DapToggleBreakpoint, bufopts)
 setkey("n", "<leader>do", function()
-    vim.cmd.Neotest("output-panel")
+	vim.cmd.Neotest("output-panel")
 end)
 setkey("n", "<leader>dr", function()
-    require("neotest").run.run({ strategy = "dap" })
+	require("neotest").run.run({ strategy = "dap" })
 end)
+setkey("n", "gq", vim.lsp.buf.format, {})

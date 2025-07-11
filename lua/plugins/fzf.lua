@@ -73,8 +73,8 @@ return {
                 -- default options are controlled by 'fd|rg|find|_opts'
                 -- cmd            = "rg --files",
                 find_opts = [[-type f \! -path '*/.git/*']],
-                rg_opts = [[--color=never --hidden --files -g "!.git"]],
-                fd_opts = [[--color=never --hidden --type f --type l --exclude .git]],
+                rg_opts = [[--color=never --hidden --files -g "!.git" -g "!**__pycache__/*"]],
+                fd_opts = [[--color=never --hidden --type f --type l --exclude .git --exclude "__pycache__"]],
                 dir_opts = [[/s/b/a:-d]],
                 -- by default, cwd appears in the header only if {opts} contain a cwd
                 -- parameter to a different folder than the current working directory
