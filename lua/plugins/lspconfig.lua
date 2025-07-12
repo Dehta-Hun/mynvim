@@ -19,6 +19,7 @@ return {
         lspconfig.html.setup({})
         lspconfig.docker_compose_language_service.setup({})
         lspconfig.dockerls.setup({})
+        lspconfig.bashls.setup({})
         lspconfig.jsonls.setup({
             settings = {
                 json = {
