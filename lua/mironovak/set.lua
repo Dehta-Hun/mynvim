@@ -49,16 +49,16 @@ vim.filetype.add({
     },
 })
 -- RSync repo to testmachine
-vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-        local path = vim.api.nvim_buf_get_name(0):match(".*Corp.FWaaS.*")
-        if path then
-            os.execute(
-                'tmux new-session -d "rsync -aP ~/Corp-FWaaS qc-fwaas-manual-kvm-mironov-2.avp.ru: > /dev/null 2>&1"'
-            )
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     callback = function()
+--         local path = vim.api.nvim_buf_get_name(0):match(".*Corp.FWaaS.*")
+--         if path then
+--             os.execute(
+--                 'tmux new-session -d "rsync -aP ~/Corp-FWaaS qc-fwaas-manual-kvm-mironov-2.avp.ru: > /dev/null 2>&1"'
+--             )
+--         end
+--     end,
+-- })
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --     callback = function()
 --         local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
