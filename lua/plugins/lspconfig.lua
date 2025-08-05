@@ -2,7 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         { "antosha417/nvim-lsp-file-operations", config = true },
-        -- { "folke/neodev.nvim", opts = {} },
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -36,22 +35,9 @@ return {
                 workspace = {},
             },
         })
-        -- require("lspconfig")["lua_ls"].setup({})
         local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
         lspconfig.lua_ls.setup({
             capabilities = capabilities_nvim_lsp,
-            -- on_attach = function(client, bufnr)
-            --     if client.supports_method("textDocument/formatting") then
-            --         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            --         vim.api.nvim_create_autocmd("BufWritePre", {
-            --             group = augroup,
-            --             buffer = bufnr,
-            --             callback = function()
-            --                 vim.lsp.buf.format()
-            --             end,
-            --         })
-            -- end
-            -- end,
             settings = {
                 Lua = {
                     diagnostics = { globals = { "vim" } },
@@ -70,7 +56,7 @@ return {
             end,
             capabilities = capabilities_nvim_lsp,
             on_attach = function(client, bufnr)
-                if client.supports_method("textDocument/formatting") then
+                if client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS") then
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = augroup,

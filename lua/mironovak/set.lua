@@ -17,7 +17,8 @@ vim.opt.colorcolumn = "120"
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
-vim.opt.mouse = "a"
+vim.opt.mouse = "v"
+vim.opt.mousemodel="extend"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
