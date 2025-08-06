@@ -19,7 +19,7 @@ return {
                     extra_args = { "-c", vim.fn.expand("~/.config/nvim/lua/plugins/format_diagn/yamllint.yaml") },
                 }),
                 null_ls.builtins.formatting.biome,
-                null_ls.builtins.formatting.tidy,
+                -- null_ls.builtins.formatting.tidy,
             },
         })
     end,
