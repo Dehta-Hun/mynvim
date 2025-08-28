@@ -7,18 +7,26 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
 
-        lspconfig.ansiblels.setup({})
-        lspconfig.ts_ls.setup({})
-        lspconfig.lemminx.setup({})
         local capabilities_make = vim.lsp.protocol.make_client_capabilities()
         capabilities_make.textDocument.completion.completionItem.snippetSupport = true
         vim.lsp.config("html", {
             capabilities = capabilities_make,
         })
+
+        lspconfig.ansiblels.setup({})
+        lspconfig.ts_ls.setup({})
+        lspconfig.lemminx.setup({})
         lspconfig.html.setup({})
         lspconfig.docker_compose_language_service.setup({})
         lspconfig.dockerls.setup({})
-        lspconfig.bashls.setup({})
+        lspconfig.bashls.setup({
+            filetypes = { "bash", "sh", "zsh" },
+            settings = {
+                bashIde = {
+                    globPattern = "*@(.sh|.inc|.bash|.zsh|.command)",
+                },
+            },
+        })
         lspconfig.jsonls.setup({
             settings = {
                 json = {
@@ -56,7 +64,9 @@ return {
             end,
             capabilities = capabilities_nvim_lsp,
             on_attach = function(client, bufnr)
-                if client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS") then
+                if
+                    client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS")
+                then
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = augroup,

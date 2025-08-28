@@ -5,6 +5,9 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Enable showing inline diagnositc
 vim.diagnostic.config({ virtual_text = true })
 
@@ -17,7 +20,7 @@ vim.opt.colorcolumn = "120"
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
-vim.opt.mouse = "v"
+vim.opt.mouse = "nv"
 vim.opt.mousemodel="extend"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8

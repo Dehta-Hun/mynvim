@@ -70,8 +70,8 @@ setkey("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
 local open_buf_dif = function()
     vim.cmd.windo("diffthis")
 end
-setkey({ "n" }, "<leader>DB", open_buf_dif)
-setkey({ "n" }, "<leader>DC", vim.cmd.diffoff)
+setkey({ "n" }, "<leader>GDB", open_buf_dif)
+setkey({ "n" }, "<leader>GDC", vim.cmd.diffoff)
 
 -- Debug
 setkey("n", "<leader>db", vim.cmd.DapToggleBreakpoint, bufopts)
