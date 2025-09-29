@@ -4,12 +4,12 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                sh = {
-                    "beautysh",
-                },
-                zsh = {
-                    "beautysh",
-                },
+                -- sh = {
+                --     "beautysh",
+                -- },
+                -- zsh = {
+                --     "beautysh",
+                -- },
                 python = {
                     -- To fix auto-fixable lint errors.
                     -- "ruff_fix",
@@ -24,7 +24,7 @@ return {
             end, { desc = "[F]ormat with Conform" }),
 
             vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = {"*.py", "*.zsh","*.sh"},
+                pattern = { "*.py" },
                 callback = function(args)
                     require("conform").format({ bufnr = args.buf })
                 end,

@@ -8,7 +8,7 @@ return {
         local easypick = require("easypick")
         -- local get_default_branch = "git remote show origin | grep 'HEAD branch' | cut -d' ' -f5"
         -- local base_branch = vim.fn.system(get_default_branch) or "main"
-        local base_branch = "master"
+        local base_branch = "release/1.1.0"
 
         easypick.setup({
             -- local easypick = require("easypick"),

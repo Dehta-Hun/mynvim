@@ -5,7 +5,7 @@ return {
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-        local lspconfig = require("lspconfig")
+        local lspconfig = vim.lsp.config
 
         local capabilities_make = vim.lsp.protocol.make_client_capabilities()
         capabilities_make.textDocument.completion.completionItem.snippetSupport = true
@@ -13,56 +13,58 @@ return {
             capabilities = capabilities_make,
         })
 
-        lspconfig.ansiblels.setup({})
-        lspconfig.ts_ls.setup({})
-        lspconfig.lemminx.setup({})
-        lspconfig.html.setup({})
-        lspconfig.docker_compose_language_service.setup({})
-        lspconfig.dockerls.setup({})
-        lspconfig.bashls.setup({
+        vim.lsp.enable({
+            "jedi_language_server",
+            "ruff",
+            "ansiblels",
+            "vtsls",
+            "ts_ls",
+            "lemminx",
+            "html",
+            "docker_compose_language_service",
+            "dockerls",
+            "bashls",
+            "jsonls",
+            "lua_ls",
+        })
+        lspconfig["jedi_language_server"] = {}
+        lspconfig["bashls"] = {
             filetypes = { "bash", "sh", "zsh" },
             settings = {
                 bashIde = {
                     globPattern = "*@(.sh|.inc|.bash|.zsh|.command)",
                 },
             },
-        })
-        lspconfig.jsonls.setup({
+        }
+        lspconfig["jsonls"] = {
             settings = {
                 json = {
                     schemas = require("schemastore").json.schemas({}),
                     validate = { enable = true },
                 },
             },
-        })
-        lspconfig.jedi_language_server.setup({
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
-            init_options = {
-                workspace = {},
-            },
-        })
+        }
         local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
-        lspconfig.lua_ls.setup({
+        lspconfig["lua_ls"] = {
             capabilities = capabilities_nvim_lsp,
             settings = {
                 Lua = {
                     diagnostics = { globals = { "vim" } },
                 },
             },
-        })
-        require("lspconfig")["ruff"].setup({
+        }
+        lspconfig["ruff"] = {
             init_options = {
                 settings = {
                     configuration = "~/Corp-FWaaS/test/pyproject.toml",
                     args = {},
                 },
             },
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
-            capabilities = capabilities_nvim_lsp,
+            capabilities = {
+                general = {
+                    positionEncodings = { "utf-16" },
+                },
+            },
             on_attach = function(client, bufnr)
                 if
                     client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS")
@@ -77,7 +79,7 @@ return {
                     })
                 end
             end,
-        })
+        }
         vim.diagnostic.config({
             signs = {
                 text = {
