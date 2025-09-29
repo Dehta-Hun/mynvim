@@ -15,12 +15,14 @@ return {
     -- api.config.mappings.default_on_attach(bufnr)
     --
     -- -- custom mappings
-    -- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up"))
-    -- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+    -- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up")),
+    -- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help")),
     --
     config = function()
         vim.opt.termguicolors = true
         require("nvim-tree").setup({
+            vim.keymap.set("n", "<A-n>", vim.cmd.NvimTreeToggle),
+            vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus),
             sort_by = "case_sensitive",
             filters = {
                 dotfiles = false,

@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 local setkey = vim.keymap.set
 
 -- vim.cmd.MiniFiles.open)
--- setkey("n", "<leader>e", vim.cmd.NvimTreeFocus)
 setkey("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 -- Hide/close deapth level
 setkey({ "n" }, "zo", "za")
