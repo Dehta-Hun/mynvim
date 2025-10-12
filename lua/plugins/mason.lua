@@ -19,6 +19,7 @@ return {
                     "dockerls",
                     "docker_compose_language_service",
                     "jsonls",
+                    "gopls",
                 },
             })
         end,

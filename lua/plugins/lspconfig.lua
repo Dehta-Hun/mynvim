@@ -26,6 +26,7 @@ return {
             "bashls",
             "jsonls",
             "lua_ls",
+            "gopls",
         })
         lspconfig["jedi_language_server"] = {}
         lspconfig["bashls"] = {
