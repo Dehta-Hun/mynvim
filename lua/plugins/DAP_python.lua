@@ -36,7 +36,8 @@ return {
                 request = "launch",
                 name = "Launch file (console = integratedTerminal, justMyCode = false)",
                 program = "${file}",
-                console = "integratedTerminal",
+                -- console = "integratedTerminal",
+                console = "internalConsole",
                 justMyCode = false,
                 -- pythonPath = opts.pythonPath,
             },
@@ -61,9 +62,9 @@ return {
             {
                 type = "python",
                 request = "launch",
-                name = "Launch file with arguments (console = integratedTerminal, justMyCode = false)",
+                name = "Launch file with arguments (console = internalConsole, justMyCode = false)",
                 program = "${file}",
-                console = "integratedTerminal",
+                console = "internalConsole",
                 justMyCode = false,
                 -- pythonPath = opts.pythonPath,
                 args = function()

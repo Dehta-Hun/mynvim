@@ -15,7 +15,7 @@ return {
                 require("neotest-python")({
                     -- Extra arguments for nvim-dap configuration
                     -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-                    dap = { justMyCode = false, console = "integratedTerminal" },
+                    dap = { justMyCode = false, console = "internalConsole" },
                     -- Command line arguments for runner
                     -- Can also be a function to return dynamic values
                     args = {

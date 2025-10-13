@@ -5,6 +5,7 @@ return {
     },
     config = function()
         local builtin = require("telescope.builtin")
+        local utils = require("telescope.utils")
         local custom_pickers = require("plugins.addons.telescope_custom_pickers")
         local keymap = vim.keymap.set
         local opts = { noremap = true, silent = true }
@@ -100,6 +101,9 @@ return {
             local text = vim.getVisualSelection()
             builtin.current_buffer_fuzzy_find({ default_text = text })
         end, opts)
+        vim.keymap.set("n", "<leader>fc", function()
+            builtin.find_files({ cwd = utils.buffer_dir() })
+        end, { desc = "Find files in current working directory" })
 
         keymap("n", "<leader>fd", function()
             builtin.diagnostics({ bufnr = 0 })
