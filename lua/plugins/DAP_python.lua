@@ -1,21 +1,3 @@
--- return {
--- 	"mfussenegger/nvim-dap-python",
--- 	ft = "python",
--- 	dependencies = { "mfussenegger/nvim-dap" },
--- 	config = function()
--- 		local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
--- 		require("dap-python").setup(path)
--- 		local pythonAttachConfig = {
--- 			type = "python",
--- 			request = "attach",
--- 			connect = {
--- 				port = 5678,
--- 				host = "127.0.0.1",
--- 			},
--- 		}
--- 		table.insert(require("dap").configurations.python, pythonAttachConfig)
--- 	end,
--- }
 return {
     "mfussenegger/nvim-dap-python",
     dependencies = { "mfussenegger/nvim-dap" },

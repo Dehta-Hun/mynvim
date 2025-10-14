@@ -3,9 +3,9 @@ return {
     event = { "CursorMoved", "WinScrolled" },
     config = function()
         require("scrollEOF").setup({
-            pattern = "*",
+            pattern = "dap-repl*",
             insert_mode = true,
-            floating = true,
+            floating = false,
             disabled_filetypes = {},
             disabled_modes = {},
         })
