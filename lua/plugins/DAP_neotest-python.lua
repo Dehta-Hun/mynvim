@@ -13,6 +13,17 @@ return {
         local builtin = require("telescope.builtin")
         local utils = require("telescope.utils")
 
+        -- Async input using vim.ui.input
+        local function get_input_async(prompt, callback)
+            vim.ui.input({ prompt = prompt }, function(input)
+                if not input or input == "" then
+                    callback(nil)
+                else
+                    callback(input)
+                end
+            end)
+        end
+
         local function pick_file(callback)
             builtin.find_files({
                 find_command = { "fd", "--type", "f", "--extension", "yaml" },
@@ -22,26 +33,34 @@ return {
                         local entry = action_state.get_selected_entry()
                         local path = entry.path or entry.value
                         actions.close(prompt_bufnr)
-
-                        -- Safe escape from fast event context
                         vim.schedule(function()
-                            if callback then
-                                callback(path)
-                            end
+                            callback(path)
                         end)
                     end)
                     return true
                 end,
             })
         end
+
+        -- Combined logic for <leader>dr
         vim.keymap.set("n", "<leader>dr", function()
-            pick_file(function(path)
-                require("neotest").run.run({ extra_args = { "--configfile=" .. path }, strategy = "dap" })
+            get_input_async("Enter extra pytest args: ", function(additional_params)
+                pick_file(function(path)
+                    local args = { "--configfile=" .. path }
+                    if additional_params and additional_params ~= "" then
+                        table.insert(args, additional_params)
+                    end
+
+                    require("neotest").run.run({
+                        extra_args = args,
+                        strategy = "dap",
+                    })
+                end)
             end)
-        end)
+        end, { desc = "Run test with dynamic config file" })
+
         require("neotest").setup({
             default_strategy = "dap",
-            -- floating
             adapters = {
                 require("neotest-python")({
                     summary = {
@@ -60,8 +79,6 @@ return {
                     args = {
                         "/home/mironov_a/Corp-FWaaS/test/ngfw/conftest.py",
                         "--rootdir=/home/mironov_a/Corp-FWaaS/test",
-                        -- "--configroot=test/configs",
-                        -- "--libs-path=/home/mironov_a/Corp-FWaaS/test/ngfw/ngfw_ktt/libs",
                         "--log-cli-level=DEBUG",
                         "--log-file=/tmp/pytest-logs.txt",
                     },

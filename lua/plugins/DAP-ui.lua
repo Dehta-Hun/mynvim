@@ -24,14 +24,14 @@ return {
                         "watches",
                         -- "console",
                     },
-                    size = 40, -- width (for left/right) or height (for top/bottom)
+                    size = 50, -- width (for left/right) or height (for top/bottom)
                     position = "left",
                 },
                 {
                     elements = {
                         "repl",
                     },
-                    size = 10, -- height of bottom layout
+                    size = 12, -- height of bottom layout
                     position = "bottom",
                 },
             },
