@@ -7,18 +7,11 @@ return {
     -- dependencies = { "echasnovski/mini.icons" },
     opts = {},
     config = function()
-        _G.fzf_smart_case = true
-        function _G.toggle_fzf_smart_case()
-            _G.fzf_smart_case = not _G.fzf_smart_case
-            vim.notify("fzf-lua smart_case: " .. tostring(_G.fzf_smart_case), vim.log.levels.INFO)
-        end
-
         local keymap = vim.keymap.set
         local fzf = require("fzf-lua")
         local actions = require("fzf-lua").actions
         require("fzf-lua").setup({
             -- Global toggle variable
-
             { "telescope", "fzf-native" },
             winopts = {
                 height = 0.4, -- dropdown height
@@ -59,7 +52,7 @@ return {
                 previewer = "bat", -- uncomment to override previewer
                 -- (name from 'previewers' table)
                 -- set to 'false' to disable
-                prompt = "Files❯ ASDFASDF",
+                prompt = "Files❯ ",
                 multiprocess = true, -- run command in a separate process
                 git_icons = true, -- show git icons?
                 file_icons = true, -- show file icons (true|"devicons"|"mini")?
@@ -110,21 +103,6 @@ return {
                 -- otherwise auto-detect prioritizes `rg` over `grep`
                 -- default options are controlled by 'rg|grep_opts'
                 -- cmd            = "rg --vimgrep",
-                grep_opts = function()
-                    if _G.fzf_smart_case then
-                        return "--binary-files=without-match --line-number --recursive --color=auto --smart_case --perl-regexp -e"
-                    else
-                        return "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e"
-                    end
-                end,
-                rg_opts = function()
-                    vim.notify("fzf-lua smart_case: " .. tostring(_G.fzf_smart_case), vim.log.levels.INFO)
-                    if _G.fzf_smart_case then
-                        return "--column --line-number --no-heading --smart_case --color=always --max-columns=4096 -e"
-                    else
-                        return "--column --line-number --no-heading --color=always --max-columns=4096 -e"
-                    end
-                end,
                 hidden = false, -- disable hidden files by default
                 -- toggle_case_flag = "--smart-case",
                 follow = false, -- do not follow symlinks by default
@@ -165,22 +143,9 @@ return {
                 no_header_i = false, -- hide interactive header?
             },
         })
-        keymap("n", "<leader>fzf", fzf.live_grep, opts)
+        keymap("n", "<leader>fzf", fzf.grep, opts)
         keymap("n", "<leader>fb", fzf.buffers, opts)
         keymap("n", "<leader>ff", fzf.files, opts)
         keymap("n", "<leader>fg", fzf.grep_curbuf, opts)
-        local result_test = function()
-            if _G.fzf_smart_case then
-                return "--column --line-number --no-heading --smart-case --color=always --max-columns=4096 -e"
-            else
-                return "--column --line-number --no-heading --color=always --max-columns=4096 -e"
-            end
-        end
-        keymap("n", "<leader>fz", function()
-            require("fzf-lua").live_grep({
-                rg_opts = result_test(),
-            })
-        end)
-        keymap({ "n", "t" }, "<C-x>", toggle_fzf_smart_case, { desc = "Toggle fzf smart_case" })
     end,
 }
