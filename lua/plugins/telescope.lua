@@ -90,9 +90,9 @@ return {
             builtin.current_buffer_fuzzy_find({ default_text = text })
         end, opts)
 
-        vim.keymap.set("n", "<leader>fc", function()
-            builtin.find_files({ cwd = utils.buffer_dir() })
-        end, { desc = "Find files in current working directory" })
+        -- vim.keymap.set("n", "<leader>fc", function()
+        --     builtin.find_files({ cwd = utils.buffer_dir() })
+        -- end, { desc = "Find files in current working directory" })
 
         keymap("n", "<leader>fd", function()
             builtin.diagnostics({ bufnr = 0 })
