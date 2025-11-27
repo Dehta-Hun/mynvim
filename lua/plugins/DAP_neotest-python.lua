@@ -7,7 +7,7 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  config = function ()
+  config = function()
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
     local builtin = require("telescope.builtin")
@@ -15,7 +15,7 @@ return {
 
     -- Async input using vim.ui.input
     local function get_input_async(prompt, callback)
-      vim.ui.input({ prompt = prompt }, function (input)
+      vim.ui.input({ prompt = prompt }, function(input)
         if not input or input == "" then
           callback(nil)
         else
@@ -28,12 +28,12 @@ return {
       builtin.find_files({
         find_command = { "fd", "--type", "f", "--extension", "yaml" },
         cwd = utils.buffer_dir(),
-        attach_mappings = function (prompt_bufnr, map)
-          actions.select_default:replace(function ()
+        attach_mappings = function(prompt_bufnr, map)
+          actions.select_default:replace(function()
             local entry = action_state.get_selected_entry()
             local path = entry.path or entry.value
             actions.close(prompt_bufnr)
-            vim.schedule(function ()
+            vim.schedule(function()
               callback(path)
             end)
           end)
@@ -43,9 +43,9 @@ return {
     end
 
     -- Combined logic for <leader>dr
-    vim.keymap.set("n", "<leader>dr", function ()
-      get_input_async("Enter extra pytest args: ", function (additional_params)
-        pick_file(function (path)
+    vim.keymap.set("n", "<leader>dr", function()
+      get_input_async("Enter extra pytest args: ", function(additional_params)
+        pick_file(function(path)
           local args = { "--configfile=" .. path }
           if additional_params and additional_params ~= "" then
             table.insert(args, additional_params)

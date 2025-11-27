@@ -18,7 +18,7 @@ return {
   -- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up")),
   -- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help")),
   --
-  config = function ()
+  config = function()
     vim.opt.termguicolors = true
     require("nvim-tree").setup({
       vim.keymap.set("n", "<A-n>", vim.cmd.NvimTreeToggle),

@@ -4,14 +4,14 @@ return {
     "mfussenegger/nvim-dap",
     "nvim-neotest/nvim-nio",
   },
-  config = function ()
+  config = function()
     local dap = require("dap")
     local dapui = require("dapui")
     require("lazydev").setup({
       library = { "nvim-dap-ui" },
     })
     -- dapui.setup()
-    dap.listeners.after.event_initialized["dapui_config"] = function ()
+    dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end
     require("dapui").setup({
@@ -37,7 +37,7 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>dc", function ()
+    vim.keymap.set("n", "<leader>dc", function()
       dapui.close()
     end)
     -- dap.listeners.before.event_terminated["dapui_config"] = function()

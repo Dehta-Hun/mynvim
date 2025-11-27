@@ -4,7 +4,7 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   event = { "BufReadPre", "BufNewFile" },
-  config = function ()
+  config = function()
     local lspconfig = vim.lsp.config
 
     local capabilities_make = vim.lsp.protocol.make_client_capabilities()
@@ -66,13 +66,13 @@ return {
           positionEncodings = { "utf-16" },
         },
       },
-      on_attach = function (client, bufnr)
+      on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
             buffer = bufnr,
-            callback = function ()
+            callback = function()
               vim.lsp.buf.format()
             end,
           })

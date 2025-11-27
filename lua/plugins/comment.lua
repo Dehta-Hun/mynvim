@@ -1,7 +1,7 @@
 return {
   "numToStr/Comment.nvim",
   lazy = false,
-  config = function ()
+  config = function()
     require("Comment").setup({
       ignore = "^$",
       toggler = {

@@ -1,7 +1,7 @@
 return {
   "NvChad/nvterm",
   lazy = false,
-  config = function ()
+  config = function()
     require("nvterm").setup({
       terminals = {
         shell = vim.o.shell,
@@ -28,7 +28,7 @@ return {
         auto_insert = true,
       },
     })
-    vim.keymap.set({ "n", "t", "v", "x" }, "<A-i>", function ()
+    vim.keymap.set({ "n", "t", "v", "x" }, "<A-i>", function()
       require("nvterm.terminal").toggle("float")
     end)
     -- vim.keymap.set({ "n", "t", "v", "x" }, "<A-z>", function()

@@ -28,7 +28,7 @@ local function run_live_grep(current_input)
   require("plugins.addons.telescope_pretty_pickers").pretty_grep_picker({
     picker = "live_grep",
     options = {
-      additional_args = live_grep_filters.extension and function ()
+      additional_args = live_grep_filters.extension and function()
         return { "-g", "*." .. live_grep_filters.extension }
       end,
       search_dirs = live_grep_filters.directories,
@@ -39,10 +39,10 @@ end
 
 M.actions = transform_mod({
   ---Ask for a file extension and open a new `live_grep` filtering by it
-  set_extension = function (prompt_bufnr)
+  set_extension = function(prompt_bufnr)
     local current_input = action_state.get_current_line()
 
-    vim.ui.input({ prompt = "*." }, function (input)
+    vim.ui.input({ prompt = "*." }, function(input)
       if input == nil then
         return
       end
@@ -54,7 +54,7 @@ M.actions = transform_mod({
     end)
   end,
   ---Ask the user for a folder and olen a new `live_grep` filtering by it
-  set_folders = function (prompt_bufnr)
+  set_folders = function(prompt_bufnr)
     local current_input = action_state.get_current_line()
 
     local data = {}
@@ -62,7 +62,7 @@ M.actions = transform_mod({
       hidden = true,
       only_dirs = true,
       respect_gitignore = true,
-      on_insert = function (entry)
+      on_insert = function(entry)
         table.insert(data, entry .. os_sep)
       end,
     })
@@ -75,8 +75,8 @@ M.actions = transform_mod({
         finder = finders.new_table({ results = data, entry_maker = make_entry.gen_from_file({}) }),
         previewer = conf.file_previewer({}),
         sorter = conf.file_sorter({}),
-        attach_mappings = function (prompt_bufnr)
-          action_set.select:replace(function ()
+        attach_mappings = function(prompt_bufnr)
+          action_set.select:replace(function()
             local current_picker = action_state.get_current_picker(prompt_bufnr)
 
             local dirs = {}
@@ -101,7 +101,7 @@ M.actions = transform_mod({
 })
 
 ---Small wrapper over `live_grep` to first reset our active filters
-M.live_grep = function ()
+M.live_grep = function()
   live_grep_filters.extension = nil
   live_grep_filters.directories = nil
 

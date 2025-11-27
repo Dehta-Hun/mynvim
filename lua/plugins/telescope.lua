@@ -3,7 +3,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  config = function ()
+  config = function()
     local builtin = require("telescope.builtin")
     local utils = require("telescope.utils")
     local custom_pickers = require("plugins.addons.telescope_custom_pickers")
@@ -72,13 +72,13 @@ return {
     end
 
     -- keymap("n", "<leader>ff", builtin.find_files, {})
-    keymap("v", "<leader>ff", function ()
+    keymap("v", "<leader>ff", function()
       local text = vim.getVisualSelection()
       builtin.find_files({ default_text = text })
     end, opts)
 
     keymap("n", "<leader>fs", builtin.live_grep, {})
-    keymap("v", "<leader>fs", function ()
+    keymap("v", "<leader>fs", function()
       local text = vim.getVisualSelection()
       builtin.live_grep({ default_text = text })
     end, opts)
@@ -87,7 +87,7 @@ return {
     keymap("n", "<leader>fh", builtin.help_tags, {})
     -- keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
 
-    keymap("v", "<leader>fz", function ()
+    keymap("v", "<leader>fz", function()
       local text = vim.getVisualSelection()
       builtin.current_buffer_fuzzy_find({ default_text = text })
     end, opts)
@@ -96,7 +96,7 @@ return {
     --     builtin.find_files({ cwd = utils.buffer_dir() })
     -- end, { desc = "Find files in current working directory" })
 
-    keymap("n", "<leader>fd", function ()
+    keymap("n", "<leader>fd", function()
       builtin.diagnostics({ bufnr = 0 })
     end, {})
   end,

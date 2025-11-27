@@ -4,7 +4,7 @@ return {
   keys = {
     { "<leader>fc", "<cmd>Easypick changed_files<cr>", desc = "easypick" },
   },
-  config = function ()
+  config = function()
     local easypick = require("easypick")
     -- local get_default_branch = "git remote show origin | grep 'HEAD branch' | cut -d' ' -f5"
     -- local base_branch = vim.fn.system(get_default_branch) or "main"

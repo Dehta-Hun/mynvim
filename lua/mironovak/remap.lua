@@ -10,7 +10,7 @@ vim.keymap.set({ "n", "v" }, "<Esc>", vim.cmd.noh)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "ge", function ()
+vim.keymap.set("n", "ge", function()
   vim.diagnostic.jump({ count = -1, float = true })
 end)
 
@@ -52,7 +52,7 @@ vim.keymap.set("n", "<C-n>", vim.cmd.bnext)
 vim.keymap.set("n", "<C-p>", vim.cmd.bprev)
 
 vim.keymap.set("v", "$", "g_")
-local buffdelete = function ()
+local buffdelete = function()
   vim.cmd.bdelete()
   vim.cmd.bnext()
 end
@@ -65,7 +65,7 @@ vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
 
 --git
-local open_buf_dif = function ()
+local open_buf_dif = function()
   vim.cmd.windo("diffthis")
 end
 vim.keymap.set({ "n" }, "<leader>GDB", open_buf_dif)
@@ -73,7 +73,7 @@ vim.keymap.set({ "n" }, "<leader>GDC", vim.cmd.diffoff)
 
 -- Debug
 vim.keymap.set("n", "<leader>db", vim.cmd.DapToggleBreakpoint, bufopts)
-vim.keymap.set("n", "<leader>do", function ()
+vim.keymap.set("n", "<leader>do", function()
   vim.cmd.Neotest("output-panel")
 end)
 -- vim.keymap.set("n", "<leader>dr", function()

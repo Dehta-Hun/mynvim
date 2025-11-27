@@ -57,7 +57,7 @@ function M.pretty_grep_picker(picker_and_options)
   --          will generate each entry.
   -- INSIGHT: The paramenter 'line' is the actual data to be displayed by the picker, however, its form is
   --          raw (type 'any) and must be transformed into an entry table.
-  options.entry_maker = function (line)
+  options.entry_maker = function(line)
     -- Generate the Original Entry table
     local original_entry_table = original_entry_maker(line)
 
@@ -85,7 +85,7 @@ function M.pretty_grep_picker(picker_and_options)
     --          be deferred to allow lazy loading.
     --
     -- HELP: Read the 'make_entry.lua' file for more info on how all of this works
-    original_entry_table.display = function (entry)
+    original_entry_table.display = function(entry)
       ---- Get File columns data ----
       -------------------------------
 

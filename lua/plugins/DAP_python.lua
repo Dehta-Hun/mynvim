@@ -2,7 +2,7 @@ return {
   "mfussenegger/nvim-dap-python",
   dependencies = { "mfussenegger/nvim-dap" },
   enabled = true,
-  config = function ()
+  config = function()
     local status, dap = pcall(require, "dap")
     if not status then
       return
@@ -36,7 +36,7 @@ return {
         name = "Launch file with arguments (justMyCode = false)",
         program = "${file}",
         justMyCode = false,
-        args = function ()
+        args = function()
           local args_string = vim.fn.input("Arguments: ")
           return vim.split(args_string, " +")
         end,
@@ -49,7 +49,7 @@ return {
         console = "internalConsole",
         justMyCode = false,
         -- pythonPath = opts.pythonPath,
-        args = function ()
+        args = function()
           local args_string = vim.fn.input("Arguments: ")
           return vim.split(args_string, " +")
         end,

@@ -6,7 +6,7 @@ return {
   -- or if using mini.icons/mini.nvim
   -- dependencies = { "echasnovski/mini.icons" },
   opts = {},
-  config = function ()
+  config = function()
     local keymap = vim.keymap.set
     local fzf = require("fzf-lua")
     local actions = require("fzf-lua").actions
