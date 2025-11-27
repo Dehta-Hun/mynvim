@@ -15,7 +15,7 @@ return {
             },
             sections = {
                 lualine_x = { "searchcount", "filetype" },
-                lualine_b = {
+                lualine_c = {
                     "diff",
                     {
                         "diagnostics",
@@ -27,8 +27,15 @@ return {
                         },
                     },
                 },
-                lualine_c = {},
                 lualine_a = {
+                    {
+                        "mode",
+                        fmt = function(res)
+                            return res:sub(1, 3)
+                        end,
+                    },
+                },
+                lualine_b = {
                     {
                         "buffers",
                         -- Shows shortened relative path when set to false.
@@ -38,7 +45,8 @@ return {
                         -- Shows indicator when the buffer is modified.
                         show_modified_status = true,
 
-                        mode = 2, -- 0: Shows buffer name
+                        mode = 2,
+                        -- 0: Shows buffer name
                         -- 1: Shows buffer index
                         -- 2: Shows buffer name + buffer index
                         -- 3: Shows buffer number

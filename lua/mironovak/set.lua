@@ -21,7 +21,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.mouse = "nv"
-vim.opt.mousemodel="extend"
+vim.opt.mousemodel = "extend"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
@@ -41,16 +41,16 @@ vim.opt.cursorline = true
 vim.cmd("let g:rnvimr_enable_picker = 1")
 
 vim.filetype.add({
-    extension = {
-        bpt = "xml", -- treat bpt as xml
-    },
-    filename = {
-        ["docker-compose.yaml"] = "yaml.docker-compose",
-        ["docker-compose.yml"] = "yaml.docker-compose",
-    },
-    pattern = {
-        [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
-    },
+  extension = {
+    bpt = "xml", -- treat bpt as xml
+  },
+  filename = {
+    ["docker-compose.yaml"] = "yaml.docker-compose",
+    ["docker-compose.yml"] = "yaml.docker-compose",
+  },
+  pattern = {
+    [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
+  },
 })
 -- RSync repo to testmachine
 -- vim.api.nvim_create_autocmd("BufWritePost", {

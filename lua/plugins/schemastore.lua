@@ -1,4 +1,4 @@
 return {
-    "b0o/schemastore.nvim",
-    config = function() end,
+  "b0o/schemastore.nvim",
+  config = function () end,
 }
