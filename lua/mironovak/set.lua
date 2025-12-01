@@ -51,6 +51,15 @@ vim.filetype.add({
   pattern = {
     [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
   },
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    callback = function()
+      local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
+      if path then
+        os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
+        vim.cmd.checktime()
+      end
+    end,
+  }),
 })
 -- RSync repo to testmachine
 -- vim.api.nvim_create_autocmd("BufWritePost", {
@@ -60,15 +69,6 @@ vim.filetype.add({
 --             os.execute(
 --                 'tmux new-session -d "rsync -aP ~/Corp-FWaaS qc-fwaas-manual-kvm-mironov-2.avp.ru: > /dev/null 2>&1"'
 --             )
---         end
---     end,
--- })
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     callback = function()
---         local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
---         if path then
---             os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
---             vim.cmd.checktime()
 --         end
 --     end,
 -- })
