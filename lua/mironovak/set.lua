@@ -31,14 +31,13 @@ vim.opt.timeoutlen = 800
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.formatoptions = "cro"
+vim.opt.formatoptions = "croq"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.undofile = true
 
 vim.opt.cursorline = true
-vim.cmd("let g:rnvimr_enable_picker = 1")
+-- vim.cmd("let g:rnvimr_enable_picker = 1")
 
 vim.filetype.add({
   extension = {
@@ -51,15 +50,16 @@ vim.filetype.add({
   pattern = {
     [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
   },
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-      local path = vim.api.nvim_buf_get_name(0):match(".*test_conf.in.json")
-      if path then
-        os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
-        vim.cmd.checktime()
-      end
-    end,
-  }),
+})
+vim.api.nvim_create_autocmd("BufWritePost", {
+  callback = function()
+    local path = vim.api.nvim_buf_get_name(0):match(".*/test_jsons/.+%.json$")
+    if path then
+      os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
+      -- vim.system({"python", "~/Corp-FWaaS/test/tools/json_format.py", "format", "%s", path}, {detach = true})
+      vim.cmd.checktime()
+    end
+  end,
 })
 -- RSync repo to testmachine
 -- vim.api.nvim_create_autocmd("BufWritePost", {

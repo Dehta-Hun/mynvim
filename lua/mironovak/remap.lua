@@ -1,4 +1,6 @@
+local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- vim.cmd.MiniFiles.open)
 vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -58,11 +60,6 @@ local buffdelete = function()
 end
 vim.keymap.set("n", "<leader>bd", buffdelete)
 
---lsp keybinds
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
 
 --git
 local open_buf_dif = function()
@@ -71,12 +68,6 @@ end
 vim.keymap.set({ "n" }, "<leader>GDB", open_buf_dif)
 vim.keymap.set({ "n" }, "<leader>GDC", vim.cmd.diffoff)
 
--- Debug
-vim.keymap.set("n", "<leader>db", vim.cmd.DapToggleBreakpoint, bufopts)
-vim.keymap.set("n", "<leader>do", function()
-  vim.cmd.Neotest("output-panel")
-end)
 -- vim.keymap.set("n", "<leader>dr", function()
 -- require("neotest").run.run({ strategy = "dap" })
 -- end)
-vim.keymap.set("n", "gq", vim.lsp.buf.format, {})

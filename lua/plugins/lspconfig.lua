@@ -7,14 +7,16 @@ return {
   config = function()
     local lspconfig = vim.lsp.config
 
-    local capabilities_make = vim.lsp.protocol.make_client_capabilities()
-    capabilities_make.textDocument.completion.completionItem.snippetSupport = true
-    vim.lsp.config("html", {
-      capabilities = capabilities_make,
-    })
+    --lsp keybinds
+    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover)
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+    vim.keymap.set("n", "gq", vim.lsp.buf.format, {})
 
     vim.lsp.enable({
-      "jedi_language_server",
+      "basedpyright",
+      -- "jedi_language_server",
       "ruff",
       "ansiblels",
       "vtsls",
@@ -29,6 +31,32 @@ return {
       "gopls",
     })
     lspconfig["jedi_language_server"] = {}
+    lspconfig["basedpyright"] = {
+      settings = {
+        basedpyright = {
+          disableOrganizeImports = true,
+          -- disableLanguageServices = true,
+          analysis = {
+            typeCheckingMode = "basic",
+            inlayHints = {
+              variableTypes = false,
+              callArgumentNames = false,
+              callArgumentNamesMatching = false,
+              functionReturnTypes = false,
+              genericTypes = false,
+              reportUnknownParameterType = false,
+            },
+          },
+        },
+      },
+    }
+
+    local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+    html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+    lspconfig["html"] = {
+      capabilities = html_capabilities,
+    }
+
     lspconfig["bashls"] = {
       filetypes = { "bash", "sh", "zsh" },
       settings = {
@@ -37,6 +65,7 @@ return {
         },
       },
     }
+
     lspconfig["jsonls"] = {
       settings = {
         json = {
@@ -45,15 +74,17 @@ return {
         },
       },
     }
-    local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
+
+    -- local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
     lspconfig["lua_ls"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
       settings = {
         Lua = {
           diagnostics = { globals = { "vim" } },
         },
       },
     }
+
     lspconfig["ruff"] = {
       init_options = {
         settings = {
@@ -79,6 +110,7 @@ return {
         end
       end,
     }
+
     vim.diagnostic.config({
       signs = {
         text = {

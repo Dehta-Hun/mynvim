@@ -12,48 +12,54 @@ return {
     if not status then
       return
     end
+    -- Debug
+    vim.keymap.set("n", "<leader>db", vim.cmd.DapToggleBreakpoint, {})
+    vim.keymap.set("n", "<leader>do", function()
+      vim.cmd.Neotest("output-panel")
+    end)
     dap.configurations.python = {
-      {
-        type = "python",
-        request = "launch",
-        name = "Launch file (console = integratedTerminal, justMyCode = false)",
-        program = "${file}",
-        -- console = "integratedTerminal",
-        console = "internalConsole",
-        justMyCode = false,
-        -- pythonPath = opts.pythonPath,
-      },
-      {
-        type = "python",
-        request = "launch",
-        name = "Launch file (justMyCode = false)",
-        program = "${file}",
-        justMyCode = false,
-      },
-      {
-        type = "python",
-        request = "launch",
-        name = "Launch file with arguments (justMyCode = false)",
-        program = "${file}",
-        justMyCode = false,
-        args = function()
-          local args_string = vim.fn.input("Arguments: ")
-          return vim.split(args_string, " +")
-        end,
-      },
-      {
-        type = "python",
-        request = "launch",
-        name = "Launch file with arguments (console = internalConsole, justMyCode = false)",
-        program = "${file}",
-        console = "internalConsole",
-        justMyCode = false,
-        -- pythonPath = opts.pythonPath,
-        args = function()
-          local args_string = vim.fn.input("Arguments: ")
-          return vim.split(args_string, " +")
-        end,
-      },
+      -- {
+      --   type = "python",
+      --   request = "launch",
+      --   name = "Launch file (console = integratedTerminal, justMyCode = false)",
+      --   program = "${file}",
+      --   -- console = "integratedTerminal",
+      --   console = "internalConsole",
+      --   justMyCode = false,
+      --   subProcess = false,
+      --   -- pythonPath = opts.pythonPath,
+      -- },
+      -- {
+      --   type = "python",
+      --   request = "launch",
+      --   name = "Launch file (justMyCode = false)",
+      --   program = "${file}",
+      --   justMyCode = false,
+      -- },
+      -- {
+      --   type = "python",
+      --   request = "launch",
+      --   name = "Launch file with arguments (justMyCode = false)",
+      --   program = "${file}",
+      --   justMyCode = false,
+      --   args = function()
+      --     local args_string = vim.fn.input("Arguments: ")
+      --     return vim.split(args_string, " +")
+      --   end,
+      -- },
+      -- {
+      --   type = "python",
+      --   request = "launch",
+      --   name = "Launch file with arguments (console = internalConsole, justMyCode = false)",
+      --   program = "${file}",
+      --   console = "internalConsole",
+      --   justMyCode = false,
+      --   -- pythonPath = opts.pythonPath,
+      --   args = function()
+      --     local args_string = vim.fn.input("Arguments: ")
+      --     return vim.split(args_string, " +")
+      --   end,
+      -- },
     }
     dappython.setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python", {
       include_configs = true,

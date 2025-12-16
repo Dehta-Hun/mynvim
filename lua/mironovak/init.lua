@@ -1,2 +1,2 @@
-require("mironovak.remap")
 require("mironovak.set")
+require("mironovak.remap")
