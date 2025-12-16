@@ -6,6 +6,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = vim.lsp.config
+    local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
 
     --lsp keybinds
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
@@ -30,8 +31,11 @@ return {
       "lua_ls",
       "gopls",
     })
-    lspconfig["jedi_language_server"] = {}
+    lspconfig["jedi_language_server"] = {
+      capabilities = capabilities_nvim_lsp,
+    }
     lspconfig["basedpyright"] = {
+      capabilities = capabilities_nvim_lsp,
       settings = {
         basedpyright = {
           disableOrganizeImports = true,
@@ -58,6 +62,7 @@ return {
     }
 
     lspconfig["bashls"] = {
+      capabilities = capabilities_nvim_lsp,
       filetypes = { "bash", "sh", "zsh" },
       settings = {
         bashIde = {
@@ -67,6 +72,7 @@ return {
     }
 
     lspconfig["jsonls"] = {
+      capabilities = capabilities_nvim_lsp,
       settings = {
         json = {
           schemas = require("schemastore").json.schemas({}),
@@ -75,9 +81,8 @@ return {
       },
     }
 
-    -- local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
     lspconfig["lua_ls"] = {
-      capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      capabilities = capabilities_nvim_lsp,
       settings = {
         Lua = {
           diagnostics = { globals = { "vim" } },
@@ -92,12 +97,14 @@ return {
           args = {},
         },
       },
-      capabilities = {
+      capabilities = vim.tbl_deep_extend("force", capabilities_nvim_lsp, {
         general = {
           positionEncodings = { "utf-16" },
         },
-      },
+      }),
+
       on_attach = function(client, bufnr)
+        ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
         if client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {

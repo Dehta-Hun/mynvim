@@ -12,22 +12,7 @@ return {
         save_on_toggle = true,
         sync_on_ui_close = true,
       },
-      -- settings = {
-      --     save_on_toggle = true,
-      --     sync_on_ui_close = true
-      -- }
     })
-    -- local settings = (
-    --     {
-    --         save_on_toggle = true,
-    --         sync_on_ui_close = true,
-    --         key = function()
-    --             return vim.loop.cwd()
-    --         end,
-    --     }
-    -- )
-    -- harpoon:save_on_toggle(true)
-    -- harpoon:sync_on_ui_close(true)
 
     vim.keymap.set("n", "<leader>ha", function()
       harpoon:list():add()

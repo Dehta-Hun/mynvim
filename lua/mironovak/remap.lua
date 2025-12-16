@@ -60,7 +60,6 @@ local buffdelete = function()
 end
 vim.keymap.set("n", "<leader>bd", buffdelete)
 
-
 --git
 local open_buf_dif = function()
   vim.cmd.windo("diffthis")

@@ -115,7 +115,7 @@ function M.pretty_grep_picker(picker_and_options)
       --          internally and return in the correct format.
       return displayer({
         tail,
-        { coordinates,     "TelescopeResultsComment" },
+        { coordinates, "TelescopeResultsComment" },
         { path_to_display, "TelescopeResultsComment" },
         text,
       })
