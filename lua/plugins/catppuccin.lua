@@ -58,7 +58,15 @@ return {
           background = true,
         },
       },
-      color_overrides = {},
+      color_overrides = {
+        all = {
+          crust = "#91d7e3",
+        },
+        latte = {},
+        frappe = {},
+        macchiato = {},
+        mocha = {},
+      },
       custom_highlights = {},
       default_integrations = true,
       auto_integrations = true,

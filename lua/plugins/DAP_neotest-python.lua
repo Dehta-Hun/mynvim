@@ -76,8 +76,8 @@ return {
           -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
           dap = {
             justMyCode = true,
-            console = "internalConsole",
-            subProcess = false,
+            console = "integratedTerminal",
+            subProcess = true,
             cwd = "${workspaceFolder}",
           },
           -- Command line arguments for runner

@@ -22,14 +22,14 @@ return {
             "breakpoints",
             "stacks",
             "watches",
-            -- "console",
+            "repl",
           },
           size = 50, -- width (for left/right) or height (for top/bottom)
           position = "left",
         },
         {
           elements = {
-            "repl",
+            "console",
           },
           size = 12, -- height of bottom layout
           position = "bottom",
