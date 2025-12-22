@@ -95,6 +95,9 @@ return {
         settings = {
           configuration = "~/Corp-FWaaS/test/pyproject.toml",
           args = {},
+          lint = {
+            enable = false,
+          },
         },
       },
       capabilities = vim.tbl_deep_extend("force", capabilities_nvim_lsp, {
@@ -104,8 +107,19 @@ return {
       }),
 
       on_attach = function(client, bufnr)
-        ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-        if client.supports_method("textDocument/formatting") and client.config.root_dir:match("Corp%-FWaaS") then
+        local root = ""
+        if client.config and type(client.config.root_dir) == "string" then
+          root = client.config.root_dir
+        end
+
+        local can_format = false
+        if client.supports_method then
+          can_format = client:supports_method("textDocument/formatting")
+        elseif client.server_capabilities and client.server_capabilities.documentFormattingProvider == true then
+          can_format = true
+        end
+
+        if can_format and root:match("Corp%-FWaaS") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
