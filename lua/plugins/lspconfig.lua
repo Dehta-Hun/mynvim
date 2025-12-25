@@ -6,7 +6,9 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = vim.lsp.config
-    local capabilities_nvim_lsp = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    capabilities.textDocument.onTypeFormatting = { dynamicRegistration = true }
+    vim.lsp.on_type_formatting.enable()
 
     --lsp keybinds
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
@@ -15,54 +17,53 @@ return {
     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
     vim.keymap.set("n", "gq", vim.lsp.buf.format, {})
 
-    vim.lsp.enable({
-      "basedpyright",
-      -- "jedi_language_server",
-      "ruff",
-      "ansiblels",
-      "vtsls",
-      "ts_ls",
-      "lemminx",
-      "html",
-      "docker_compose_language_service",
-      "dockerls",
-      "bashls",
-      "jsonls",
-      "lua_ls",
-      "gopls",
-    })
     lspconfig["jedi_language_server"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = capabilities,
+    }
+    lspconfig["pyright"] = {
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off", -- Set to "strict" or "basic" as needed, or "off" if using a separate linter like ruff
+            useLibraryCodeForTypes = true,
+          },
+        },
+      },
+
     }
     lspconfig["basedpyright"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = capabilities,
       settings = {
         basedpyright = {
           disableOrganizeImports = true,
           -- disableLanguageServices = true,
           analysis = {
-            typeCheckingMode = "basic",
+            typeCheckingMode = "standard",
+            useLibraryCodeForTypes = true,
+            autoFormatStrings = true,
             inlayHints = {
-              variableTypes = false,
-              callArgumentNames = false,
-              callArgumentNamesMatching = false,
-              functionReturnTypes = false,
-              genericTypes = false,
-              reportUnknownParameterType = false,
+              -- variableTypes = true,
+              -- useLibraryCodeForTypes = true,
+              -- callArgumentNames = true,
+              -- callArgumentNamesMatching = true,
+              -- functionReturnTypes = true,
+              -- genericTypes = false,
+              -- reportUnknownParameterType = true,
             },
           },
         },
       },
     }
 
-    local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local html_capabilities = require("cmp_nvim_lsp").default_capabilities()
     html_capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig["html"] = {
       capabilities = html_capabilities,
     }
 
     lspconfig["bashls"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = capabilities,
       filetypes = { "bash", "sh", "zsh" },
       settings = {
         bashIde = {
@@ -72,7 +73,7 @@ return {
     }
 
     lspconfig["jsonls"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = capabilities,
       settings = {
         json = {
           schemas = require("schemastore").json.schemas({}),
@@ -82,7 +83,7 @@ return {
     }
 
     lspconfig["lua_ls"] = {
-      capabilities = capabilities_nvim_lsp,
+      capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = { globals = { "vim" } },
@@ -93,14 +94,15 @@ return {
     lspconfig["ruff"] = {
       init_options = {
         settings = {
-          configuration = "~/Corp-FWaaS/test/pyproject.toml",
+          configuration = vim.fn.expand("~/Corp-FWaaS/test/pyproject.toml"),
           args = {},
           lint = {
-            enable = false,
+            enable = true,
+            preview = true,
           },
         },
       },
-      capabilities = vim.tbl_deep_extend("force", capabilities_nvim_lsp, {
+      capabilities = vim.tbl_deep_extend("force", capabilities, {
         general = {
           positionEncodings = { "utf-16" },
         },
@@ -147,6 +149,22 @@ return {
           [vim.diagnostic.severity.INFO] = "Info",
         },
       },
+    })
+    vim.lsp.enable({
+      "basedpyright",
+      -- "jedi_language_server",
+      -- "ruff",
+      -- "ansiblels",
+      -- "vtsls",
+      -- "ts_ls",
+      -- "lemminx",
+      -- "html",
+      -- "docker_compose_language_service",
+      -- "dockerls",
+      -- "bashls",
+      -- "jsonls",
+      -- "lua_ls",
+      -- "gopls",
     })
   end,
 }
