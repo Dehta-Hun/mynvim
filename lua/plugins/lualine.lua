@@ -50,7 +50,10 @@ return {
             -- 2: Shows buffer name + buffer index
             -- 3: Shows buffer number
             -- 4: Shows buffer name + buffer number
-            max_length = vim.o.columns * 2 / 3,
+            max_length = function()
+              return math.floor(vim.o.columns * 2 / 3)
+            end,
+
             filetype_names = {
               TelescopePrompt = "Telescope",
               dashboard = "Dashboard",

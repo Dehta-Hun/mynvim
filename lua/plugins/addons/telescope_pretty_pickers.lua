@@ -12,9 +12,9 @@ local entry_display = require("telescope.pickers.entry_display")
 ---@param file_name string
 ---@return string, string
 function M.get_path_and_tail(file_name)
-  local buffer_name_tail = telescope_utils.path_tail(file_name)
+  local buffer_name_tail = vim.fn.fnamemodify(file_name, ":t")
 
-  local path_without_tail = require("plenary.strings").truncate(file_name, #file_name - #buffer_name_tail, "")
+  local path_without_tail = vim.fn.fnamemodify(file_name, ":h")
 
   local path_to_display = telescope_utils.transform_path({
     path_display = { "truncate" },

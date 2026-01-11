@@ -38,8 +38,6 @@ return {
             "-uu",
             "--no-heading",
             "--with-filename",
-            "--line-number",
-            "--column",
             "--smart-case",
             "--glob=!**/.git/*",
             "--glob=!**__pycache__/*",

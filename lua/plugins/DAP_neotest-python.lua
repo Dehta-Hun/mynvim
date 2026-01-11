@@ -74,12 +74,7 @@ return {
           },
           -- Extra arguments for nvim-dap configuration
           -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-          dap = {
-            justMyCode = true,
-            console = "integratedTerminal",
-            subProcess = true,
-            cwd = "${workspaceFolder}",
-          },
+          dap = { justMyCode = true, console = "internalConsole", subProcess = false, cwd = "${workspaceFolder}", },
           -- Command line arguments for runner
           args = {
             "/home/mironov_a/Corp-FWaaS/test/ngfw/conftest.py",

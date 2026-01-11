@@ -57,15 +57,13 @@ M.actions = transform_mod({
   set_folders = function(prompt_bufnr)
     local current_input = action_state.get_current_line()
 
-    local data = {}
-    scan.scan_dir(vim.loop.cwd(), {
+    local data = scan.scan_dir(vim.loop.cwd(), {
       hidden = true,
       only_dirs = true,
       respect_gitignore = true,
-      on_insert = function(entry)
-        table.insert(data, entry .. os_sep)
-      end,
+      add_dirs = true,
     })
+
     table.insert(data, 1, "." .. os_sep)
 
     actions.close(prompt_bufnr)

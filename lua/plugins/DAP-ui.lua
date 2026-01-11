@@ -19,19 +19,22 @@ return {
         {
           elements = {
             "scopes",
-            "breakpoints",
             "stacks",
             "watches",
-            "repl",
+            "breakpoints",
           },
-          size = 50, -- width (for left/right) or height (for top/bottom)
+          -- size = 80, -- width (for left/right) or height (for top/bottom)
+          size = math.floor(vim.o.columns * 1 / 3),
+
           position = "left",
         },
         {
           elements = {
-            "console",
+            "repl",
+            -- "console",
           },
-          size = 12, -- height of bottom layout
+          -- size = 16, -- height of bottom layout
+          size = math.floor(vim.o.lines * 1 / 3),
           position = "bottom",
         },
       },
