@@ -1,5 +1,8 @@
 return {
   "tpope/vim-fugitive",
   lazy = false,
-  -- vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+  config = function()
+    -- replace "git" with "Git" for convinience 
+    vim.cmd([[ cabbrev <expr> git getcmdtype() == ':' && getcmdline() ==# 'git' ? 'Git' : 'git' ]])
+  end,
 }
