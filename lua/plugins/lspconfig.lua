@@ -30,7 +30,6 @@ return {
           },
         },
       },
-
     }
     lspconfig["basedpyright"] = {
       capabilities = capabilities,
