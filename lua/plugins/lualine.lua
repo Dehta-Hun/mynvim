@@ -10,7 +10,7 @@ return {
         always_divide_middle = true,
         -- ... your lualine config
         globalstatus = true,
-        theme = "catppuccin",
+        theme = "vesper",
         -- ... your lualine config
       },
       sections = {

@@ -1,3 +1,7 @@
+-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+vim.opt.smartindent = false
+vim.opt.autoindent = false
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
