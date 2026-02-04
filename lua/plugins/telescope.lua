@@ -69,7 +69,7 @@ return {
       end
     end
 
-    -- keymap("n", "<leader>ff", builtin.find_files, {})
+    keymap("n", "<leader>ff", builtin.find_files, {})
     keymap("v", "<leader>ff", function()
       local text = vim.getVisualSelection()
       builtin.find_files({ default_text = text })
@@ -80,19 +80,19 @@ return {
       local text = vim.getVisualSelection()
       builtin.live_grep({ default_text = text })
     end, opts)
-    -- keymap("n", "<leader>fb", builtin.buffers, {})
+    keymap("n", "<leader>fb", builtin.buffers, {})
 
     keymap("n", "<leader>fh", builtin.help_tags, {})
-    -- keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
+    keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
 
     keymap("v", "<leader>fz", function()
       local text = vim.getVisualSelection()
       builtin.current_buffer_fuzzy_find({ default_text = text })
     end, opts)
 
-    -- vim.keymap.set("n", "<leader>fc", function()
-    --     builtin.find_files({ cwd = utils.buffer_dir() })
-    -- end, { desc = "Find files in current working directory" })
+    vim.keymap.set("n", "<leader>fc", function()
+        builtin.find_files({ cwd = utils.buffer_dir() })
+    end, { desc = "Find files in current working directory" })
 
     keymap("n", "<leader>fd", function()
       builtin.diagnostics({ bufnr = 0 })

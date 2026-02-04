@@ -143,9 +143,9 @@ return {
         no_header_i = false, -- hide interactive header?
       },
     })
-    keymap("n", "<leader>fzf", fzf.grep, opts)
-    keymap("n", "<leader>fb", fzf.buffers, opts)
-    keymap("n", "<leader>ff", fzf.files, opts)
-    keymap("n", "<leader>fg", fzf.grep_curbuf, opts)
+    -- keymap("n", "<leader>fzf", fzf.grep, opts)
+    -- keymap("n", "<leader>fb", fzf.buffers, opts)
+    -- keymap("n", "<leader>ff", fzf.files, opts)
+    -- keymap("n", "<leader>fg", fzf.grep_curbuf, opts)
   end,
 }

@@ -55,7 +55,7 @@ return {
       git = {
         enable = true,
         ignore = true,
-        timeout = 1000,
+        timeout = 10000,
       },
       filesystem_watchers = {
         enable = true,

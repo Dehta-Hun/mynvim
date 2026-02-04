@@ -99,7 +99,6 @@ return {
           dap_ui = true,
           telescope = {
             enabled = true,
-            -- style = "nvchad",
           },
           harpoon = true,
           snacks = {
@@ -111,6 +110,7 @@ return {
           gitsigns = true,
           nvimtree = true,
           notify = true,
+          lsp_trouble = true,
           mini = {
             enabled = true,
             indentscope_color = "",

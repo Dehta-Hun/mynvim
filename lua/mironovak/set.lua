@@ -1,6 +1,7 @@
 -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 vim.opt.smartindent = false
 vim.opt.autoindent = false
+vim.o.autoread = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -58,12 +59,18 @@ vim.filetype.add({
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function()
-    local path = vim.api.nvim_buf_get_name(0):match(".*/test_jsons/.+%.json$")
-    if path then
-      os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %s", path))
-      -- vim.system({"python", "~/Corp-FWaaS/test/tools/json_format.py", "format", "%s", path}, {detach = true})
-      vim.cmd.checktime()
+    local buf = 0
+    local path = vim.api.nvim_buf_get_name(buf):match(".*/test_jsons/.+%.json$")
+
+    if not path then
+      return
     end
+
+    -- run formatter
+    os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %q", path))
+
+    -- reload WITHOUT killing undo
+    vim.cmd("silent! noautocmd undojoin | edit!")
   end,
 })
 -- RSync repo to testmachine
