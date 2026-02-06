@@ -15,7 +15,7 @@ vim.o.winborder = "rounded"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Enable showing inline diagnositc
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ virtual_text = true, severity_sort = true })
 
 vim.opt.swapfile = false
 vim.opt.backup = false

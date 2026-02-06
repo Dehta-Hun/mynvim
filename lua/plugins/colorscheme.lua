@@ -27,7 +27,7 @@ return {
         flavour = "macchiato", -- latte, frappe, macchiato, mocha
         background = {         -- :h background
           light = "latte",
-          dark = "mocha",
+          dark = "frappe",
         },
         transparent_background = false, -- disables setting the background color.
         float = {
@@ -80,7 +80,7 @@ return {
         },
         color_overrides = {
           all = {
-            crust = "#91d7e3",
+            -- crust = "#91d7e3",
           },
           latte = {},
           frappe = {},
