@@ -96,7 +96,7 @@ return {
           configuration = vim.fn.expand("~/Corp-FWaaS/test/pyproject.toml"),
           args = {},
           lint = {
-            enable = true,
+            enable = false,
             preview = true,
           },
         },
