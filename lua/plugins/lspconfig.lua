@@ -20,17 +20,6 @@ return {
     lspconfig["jedi_language_server"] = {
       capabilities = capabilities,
     }
-    lspconfig["pyright"] = {
-      capabilities = capabilities,
-      settings = {
-        python = {
-          analysis = {
-            typeCheckingMode = "off", -- Set to "strict" or "basic" as needed, or "off" if using a separate linter like ruff
-            useLibraryCodeForTypes = true,
-          },
-        },
-      },
-    }
     lspconfig["basedpyright"] = {
       capabilities = capabilities,
       settings = {
@@ -96,7 +85,7 @@ return {
           configuration = vim.fn.expand("~/Corp-FWaaS/test/pyproject.toml"),
           args = {},
           lint = {
-            enable = false,
+            enable = true,
             preview = true,
           },
         },
@@ -133,22 +122,6 @@ return {
       end,
     }
 
-    vim.diagnostic.config({
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = " ",
-          [vim.diagnostic.severity.WARN] = " ",
-          [vim.diagnostic.severity.INFO] = " ",
-          [vim.diagnostic.severity.HINT] = " ",
-        },
-        numhl = {
-          [vim.diagnostic.severity.ERROR] = "Error",
-          [vim.diagnostic.severity.WARN] = "Warn",
-          [vim.diagnostic.severity.HINT] = "Hint",
-          [vim.diagnostic.severity.INFO] = "Info",
-        },
-      },
-    })
     vim.lsp.enable({
       "basedpyright",
       -- "jedi_language_server",
@@ -164,6 +137,23 @@ return {
       "jsonls",
       "lua_ls",
       "gopls",
+    })
+
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.INFO] = " ",
+          [vim.diagnostic.severity.HINT] = " ",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "Error",
+          [vim.diagnostic.severity.WARN] = "Warn",
+          [vim.diagnostic.severity.HINT] = "Hint",
+          [vim.diagnostic.severity.INFO] = "Info",
+        },
+      },
     })
   end,
 }
