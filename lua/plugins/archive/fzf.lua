@@ -1,3 +1,4 @@
+-- for some reason stopped working n crushes
 return {
   "ibhagwan/fzf-lua",
   lazy = false,
@@ -146,6 +147,6 @@ return {
     -- keymap("n", "<leader>fzf", fzf.grep, opts)
     -- keymap("n", "<leader>fb", fzf.buffers, opts)
     -- keymap("n", "<leader>ff", fzf.files, opts)
-    -- keymap("n", "<leader>fg", fzf.grep_curbuf, opts)
+    -- keymap("n", "<leader>fz", fzf.grep_curbuf, opts)
   end,
 }
