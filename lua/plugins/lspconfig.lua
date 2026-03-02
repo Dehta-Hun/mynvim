@@ -29,9 +29,9 @@ return {
           analysis = {
             typeCheckingMode = "standard",
             useLibraryCodeForTypes = true,
-            autoFormatStrings = true,
+            autoFormatStrings = false,
             inlayHints = {
-              -- variableTypes = true,
+              variableTypes = true,
               -- useLibraryCodeForTypes = true,
               -- callArgumentNames = true,
               -- callArgumentNamesMatching = true,

@@ -79,7 +79,7 @@ return {
 
     keymap("n", "<leader>fs", builtin.live_grep, {})
     keymap("v", "<leader>fs", builtin.grep_string, {})
-    -- keymap("n", "<leader>fb", builtin.buffers, {})
+    keymap("n", "<leader>fb", builtin.buffers, {})
 
     keymap("n", "<leader>fh", builtin.help_tags, {})
     keymap("n", "<leader>fz", builtin.current_buffer_fuzzy_find, {})
