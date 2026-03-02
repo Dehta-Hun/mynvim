@@ -32,7 +32,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 2000
 vim.opt.timeoutlen = 800
 
 vim.opt.ignorecase = true
