@@ -57,22 +57,22 @@ vim.filetype.add({
     [".*ansible(.*/?)%w*.ya?ml"] = "yaml.ansible", -- treat ansible directory as ansible playbooks
   },
 })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  callback = function()
-    local buf = 0
-    local path = vim.api.nvim_buf_get_name(buf):match(".*/test_jsons/.+%.json$")
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   callback = function()
+--     local buf = 0
+--     local path = vim.api.nvim_buf_get_name(buf):match(".*/test_jsons/.+%.json$")
 
-    if not path then
-      return
-    end
+--     if not path then
+--       return
+--     end
 
-    -- run formatter
-    os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %q", path))
+--     -- run formatter
+--     os.execute(string.format("python ~/Corp-FWaaS/test/tools/json_format.py format %q", path))
 
-    -- reload WITHOUT killing undo
-    vim.cmd("silent! noautocmd undojoin | edit!")
-  end,
-})
+--     -- reload WITHOUT killing undo
+--     vim.cmd("silent! noautocmd undojoin | edit!")
+--   end,
+-- })
 -- RSync repo to testmachine
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --     callback = function()

@@ -11,6 +11,7 @@ return {
         -- null_ls.builtins.formatting.taplo,
         -- null_ls.builtins.formatting.tombi,
         null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.biome,
         null_ls.builtins.formatting.prettier.with({
           filetypes = { "css", "toml" },
         }),
@@ -23,7 +24,13 @@ return {
         null_ls.builtins.diagnostics.yamllint.with({
           extra_args = { "-c", vim.fn.expand("~/.config/nvim/lua/plugins/format_diagn/yamllint.yaml") },
         }),
-        null_ls.builtins.formatting.biome,
+        null_ls.builtins.diagnostics.mypy.with({
+          filetypes = { "python" },
+          extra_args = {
+            "--config-file",
+            vim.fn.expand("~/Corp-FWaaS/pyproject.toml"),
+          },
+        }),
         -- null_ls.builtins.formatting.tidy,
         require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
       },

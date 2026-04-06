@@ -27,7 +27,7 @@ return {
           disableOrganizeImports = true,
           -- disableLanguageServices = true,
           analysis = {
-            typeCheckingMode = "standard",
+            typeCheckingMode = "off",
             useLibraryCodeForTypes = true,
             autoFormatStrings = false,
             inlayHints = {
